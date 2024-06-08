@@ -9,6 +9,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
 ---
 
-Welcome to the Lengerich lab at the University of Wisconsin-Madison. Apply to <a href="https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/edit?usp=sharing">join us</a>.
+Welcome to the Lengerich lab at the University of Wisconsin-Madison.
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSctsfvSMoNk9YnCYSGWTYE2he-dR3lpD9QOmQaRtCvwH3X7Hg/viewform">Apply here</a> to join us. Find <a href="https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/edit?usp=sharing">open positions here</a>.
 
 <img src="/assets/img/madison.jpeg" alt="Madison, Wisconsin" width="100%"/>
