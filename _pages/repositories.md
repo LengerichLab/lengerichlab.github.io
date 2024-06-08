@@ -1,13 +1,16 @@
 ---
 layout: page
-permalink: /repositories/
-title: Repositories
+permalink: /resources/
+title: Resources
 description: We value reproducible and open science.
 nav: true
 nav_order: 4
 ---
 
-## GitHub Repositories
+## Knowledge base
+- [Reading List](https://github.com/LengerichLab/ReadingList)
+
+## Software tools
 
 {% if site.data.repositories.github_repos %}
 
