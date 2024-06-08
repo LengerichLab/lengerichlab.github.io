@@ -26,9 +26,9 @@ profiles:
 - [Andrea Rubbi](https://andrearubbi.com/), PhD student at University of Cambridge, [[Context-adaptive systems](/projects/1_contextualized), [Genomics](/projects/5_genomics)]
 - Aaron Alvarez, BS student at University of Cincinnati, [[Context-adaptive systems](/projects/1_contextualized)]
 - [Yingtao Luo](https://yingtaoluo.github.io/), PhD student at CMU, [[Context-adaptive systems](/projects/1_contextualized)]
-- [Jannik Deuschel](https://www.linkedin.com/in/jadeusc), MS student at Karlsruhe Institut of Technology, [[Context-adaptive systems](/projects/1_contextualized)]
+- [Jannik Deuschel](https://scholar.google.com/citations?user=eGUxrfQAAAAJ), MS student at Karlsruhe Institut of Technology, [[Context-adaptive systems](/projects/1_contextualized)]
 - Siddharth Nirgudkar, High-school student, [[Context-adaptive systems](/projects/1_contextualized)]
-- [Sazan Mahbub](https://www.linkedin.com/in/sazan-mahbub), PhD student at CMU, [[Foundation models as context](/projects/2_foundation_models)]
+- [Sazan Mahbub](https://github.com/Sazan-Mahbub), PhD student at CMU, [[Foundation models as context](/projects/2_foundation_models)]
 
 ---
 
@@ -37,6 +37,6 @@ profiles:
 - [Manolis Kellis](https://compbio.mit.edu/) [[Genomics](/projects/5_genomics), [Real-world evidence](/projects/7_rwe/)]
 - [Eric Xing](https://www.cs.cmu.edu/~epxing) [[Context-adaptive systems](/projects/1_contextualized)]
 - [Rich Caruana](https://www.microsoft.com/en-us/research/people/rcaruana/) [[LLMs](/projects/2_foundation_models/), [Intelligible ML](/projects/3_interpretable/), [Auto Data science](/projects/4_data_science)]
-- [Harsha Nori](https://www.linkedin.com/in/harshanori/) [[LLMs](/projects/2_foundation_models/), [Intelligible ML](/projects/3_interpretable/), [Auto Data science](/projects/4_data_science)]
+- [Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/) [[LLMs](/projects/2_foundation_models/), [Intelligible ML](/projects/3_interpretable/), [Auto Data science](/projects/4_data_science)]
 - [Mark E. Nunnally](https://nyulangone.org/doctors/1144385360/mark-e-nunnally) [[Real-world evidence](/projects/7_rwe), [Clinical AI](/projects/6_clinical_ai)]
 - [Vivienne Souter](https://www.qualityhealth.org/obcoap/leadership/) [[Maternal health](/projects/8_smm)]
