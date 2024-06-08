@@ -1,12 +1,9 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - blengerich
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - cnellington/Contextualized
+  - LengerichLab/clEHRity
+  - LengerichLab/ebm_utils
+  - LengerichLab/ConferenceCountdown
+  - LengerichLab/CompBioDatsetsForMachineLearning

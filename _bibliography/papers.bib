@@ -1,113 +1,375 @@
 ---
 ---
 
-@string{aps = {American Physical Society,}}
-
-@book{einstein1920relativity,
-  title={Relativity: the Special and General Theory},
-  author={Einstein, Albert},
-  year={1920},
-  publisher={Methuen & Co Ltd},
-  html={relativity.html}
+@article{lengerich2022automated,
+  title={Automated interpretable discovery of heterogeneous treatment effectiveness: A COVID-19 case study},
+  author={Lengerich, Benjamin J and Nunnally, Mark E and Aphinyanaphongs, Yin and Ellington, Caleb and Caruana, Rich},
+  journal={Journal of biomedical informatics},
+  volume={130},
+  pages={104086},
+  year={2022},
+  publisher={Elsevier},
+  informal_venue = {JBI},
+  pdf={https://www.sciencedirect.com/science/article/abs/pii/S1532046422001022},
+  html={https://www.medrxiv.org/content/10.1101/2021.10.30.21265430v1},
+  abstract={Testing multiple treatments for heterogeneous (varying) effectiveness with respect to many underlying risk factors requires many pairwise tests; we would like to instead automatically discover and visualize patient archetypes and predictors of treatment effectiveness using multitask machine learning. In this paper, we present a method to estimate these heterogeneous treatment effects with an interpretable hierarchical framework that uses additive models to visualize expected treatment benefits as a function of patient factors (identifying personalized treatment benefits) and concurrent treatments (identifying combinatorial treatment benefits). This method achieves state-of-the-art predictive power for COVID-19 in-hospital mortality and interpretable identification of heterogeneous treatment benefits. We first validate this method on the large public MIMIC-IV dataset of ICU patients to test recovery of heterogeneous treatment effects. Next we apply this method to a proprietary dataset of over 3000 patients hospitalized for COVID-19, and find evidence of heterogeneous treatment effectiveness predicted largely by indicators of inflammation and thrombosis risk: patients with few indicators of thrombosis risk benefit most from treatments against inflammation, while patients with few indicators of inflammation risk benefit most from treatments against thrombosis. This approach provides an automated methodology to discover heterogeneous and individualized effectiveness of treatments.},
+  keywords={Interpretable, Healthcare, COVID-19}
 }
 
-@book{einstein1956investigations,
-  bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif}
+@article{ellington2024contextualized,
+    doi = {10.21105/joss.06469},
+    url = {https://doi.org/10.21105/joss.06469},
+    year = {2024},
+    publisher = {The Open Journal},
+    volume = {9},
+    number = {97},
+    pages = {6469},
+    author = {Ellington, Caleb N. and Lengerich, Benjamin J. and Lo, Wesley and Alvarez, Aaron and Rubbi, Andrea and Kellis, Manolis and Xing, Eric P.},
+    title = {Contextualized: Heterogeneous Modeling Toolbox},
+    journal = {Journal of Open Source Software},
+    selected = {true},
+    abstract = {Heterogeneous and context-dependent systems are common in real-world processes, such as
+      those in biology, medicine, finance, and the social sciences. However, learning accurate and
+      interpretable models of these heterogeneous systems remains an unsolved problem. Most
+      statistical modeling approaches make strict assumptions about data homogeneity, leading
+      to inaccurate models, while more flexible approaches are often too complex to interpret
+      directly. Fundamentally, existing modeling tools force users to choose between accuracy and
+      interpretability. Recent work on Contextualized Machine Learning (Lengerich et al., 2023)
+      has introduced a new paradigm for modeling heterogeneous and context-dependent systems,
+      which uses contextual metadata to generate sample-specific models, providing context-specific
+      model-based insights and representing data heterogeneity with context-dependent model
+      parameters.
+      Here, we present Contextualized, a SKLearn-style Python package for estimating and analyzing personalized context-dependent models based on Contextualized Machine Learning.
+      Contextualized implements two reusable and extensible concepts: a context encoder which
+      translates sample context or metadata into model parameters, and sample-specific model which
+      is defined by the context-specific parameters. With the flexibility of context-dependent parameters, each context-specific model can be a simple model class, such as a linear or Gaussian
+      model, providing direct model-based interpretability without sacrificing overall accuracy.},
+  pdf = {https://www.theoj.org/joss-papers/joss.06469/10.21105.joss.06469.pdf},
+  bibtex_show = {true}
 }
 
-@article{einstein1950meaning,
-  abbr={AJP},
-  bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics},
+@InProceedings{lengerich2022dropout,
+  title={Dropout as a Regularizer of Interaction Effects},
+  author={Lengerich, Ben and Xing, Eric P. and Caruana, Rich},
+  journal={{Proceedings of the Twenty Fifth International Conference on Artificial Intelligence and Statistics (AISTATS)}},
+  year={2022},
+  informal_venue = {AISTATS},
+  booktitle = {Proceedings of the Twenty Fifth International Conference on Artificial Intelligence and Statistics},
+  html= {https://proceedings.mlr.press/v151/lengerich22a.html},
+  arxiv = {2007.00823},
+  abstract = {We examine Dropout through the perspective of interactions: effects that require multiple variables. Given $N$ variables, there are ${N \choose k}$ possible sets of $k$ variables ($N$ univariate effects, $\mathcal{O}(N^2)$ pairwise interactions, $\mathcal{O}(N^3)$ 3-way interactions); we can thus imagine that models with large representational capacity could be dominated by high-order interactions. In this paper, we show that Dropout contributes a regularization effect which helps neural networks (NNs) explore functions of lower-order interactions before considering functions of higher-order interactions. Dropout imposes this regularization by reducing the effective learning rate of higher-order interactions. As a result, Dropout encourages models to learn lower-order functions of additive components. This understanding of Dropout has implications for choosing Dropout rates: higher Dropout rates should be used when we need stronger regularization against interactions. This perspective also issues caution against using Dropout to measure term salience because Dropout regularizes against high-order interactions. Finally, this view of Dropout as a regularizer of interactions provides insight into the varying effectiveness of Dropout across architectures and datasets. We also compare Dropout to weight decay and early stopping and find that it is difficult to obtain the same regularization with these alternatives.},
+  keywords = {Deep Learning, Theory},
+  bibtex_show = {true}
+}
+
+
+@article{lengerich2023contextualized,
+      title={Contextualized Machine Learning}, 
+      author={Lengerich, Ben and Ellington, Caleb N. and Rubbi, Andrea and Kellis, Manolis and Xing, Eric P.},
+      year={2023},
+      arxiv={2310.11340},
+      archivePrefix={arXiv},
+}
+
+@article{agarwal2022neural,
+  title={Neural Additive Models: Interpretable Machine Learning with Neural Nets},
+  author={Agarwal, Rishabh and Melnick, Levi and Frosst, Nicholas and Zhang, Xuezhou and Lengerich, Ben and Caruana, Rich and Hinton, Geoffrey E},
+  journal={Advances in Neural Information Processing Systems},
+  volume={34},
+  pages={4699--4711},
+  year={2021},
+  informal_venue = {NeurIPS},
+  arxiv={2004.13912},
+  html={https://proceedings.neurips.cc/paper/2021/hash/251bd0442dfcc53b5a761e050f8022b8-Abstract.html},
+  abstract={Deep neural networks (DNNs) are powerful black-box predictors that have achieved impressive performance on a wide variety of tasks. However, their accuracy comes at the cost of intelligibility: it is usually unclear how they make their decisions. This hinders their applicability to high stakes decision-making domains such as healthcare. We propose Neural Additive Models (NAMs) which combine some of the expressivity of DNNs with the inherent intelligibility of generalized additive models. NAMs learn a linear combination of neural networks that each attend to a single input feature. These networks are trained jointly and can learn arbitrarily complex relationships between their input feature and the output. Our experiments on regression and classification datasets show that NAMs are more accurate than widely used intelligible models such as logistic regression and shallow decision trees. They perform similarly to existing state-of-the-art generalized additive models in accuracy, but are more flexible because they are based on neural nets instead of boosted trees. To demonstrate this, we show how NAMs can be used for multitask learning on synthetic data and on the COMPAS recidivism data due to their composability, and demonstrate that the differentiability of NAMs allows them to train more complex interpretable models for COVID-19.},
+  keywords = {Interpretable, Deep Learning, Generalized Additive Models},
+  bibtex_show = {true}
+}
+
+@InProceedings{chang2021how,
+  title={How Interpretable and Trustworthy are GAMs?},
+  author={Chang, Chun-Hao and Tan, Sarah and Lengerich, Ben and Goldenberg, Anna and Caruana, Rich},
+  journal={Proceedings of the 27th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining},
+  booktitle={Proceedings of the 27th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining},
+  year={2021},
+  informal_venue = {KDD},
+  abstract = {Generalized additive models (GAMs) have become a leading model class for interpretable machine learning. However, there are many algorithms for training GAMs, and these can learn different or even contradictory models, while being equally accurate. Which GAM should we trust? In this paper, we quantitatively and qualitatively investigate a variety of GAM algorithms on real and simulated datasets. We find that GAMs with high feature sparsity (only using a few variables to make predictions) can miss patterns in the data and be unfair to rare subpopulations. Our results suggest that inductive bias plays a crucial role in what interpretable models learn and that tree-based GAMs represent the best balance of sparsity, fidelity and accuracy and thus appear to be the most trustworthy GAM models.},
+  html = {https://dl.acm.org/doi/abs/10.1145/3447548.3467453},
+  arxiv={2006.06466},
+  keywords={Interpretable, Generalized Additive Models},
+  bibtex_show = {true}
+}
+
+@InProceedings{lengerich2020purifying,
+  title =    {Purifying Interaction Effects with the Functional ANOVA: An Efficient Algorithm for Recovering Identifiable Additive Models},
+  author =       {Lengerich, Ben and Tan, Sarah and Chang, Chun-Hao and Hooker, Giles and Caruana, Rich},
+  booktitle =    {Proceedings of the Twenty Third International Conference on Artificial Intelligence and Statistics (AISTATS)},
+  pages =    {2402--2412},
+  year =     {2020},
+  editor =   {Chiappa, Silvia and Calandra, Roberto},
+  volume =   {108},
+  series =   {Proceedings of Machine Learning Research},
+  month =    {26--28 Aug},
+  publisher =    {PMLR},
+  informal_venue = {AISTATS},
+  pdf =      {http://proceedings.mlr.press/v108/lengerich20a/lengerich20a.pdf},
+  abstract =     {Models which estimate main effects of individual variables alongside interaction effects have an identifiability challenge: effects can be freely moved between main effects and interaction effects without changing the model prediction. This is a critical problem for interpretability because it permits “contradictory" models to represent the same function. To solve this problem, we propose pure interaction effects: variance in the outcome which cannot be represented by any subset of features. This definition has an equivalence with the Functional ANOVA decomposition. To compute this decomposition, we present a fast, exact algorithm that transforms any piecewise-constant function (such as a tree-based model) into a purified, canonical representation. We apply this algorithm to Generalized Additive Models with interactions trained on several datasets and show large disparity, including contradictions, between the apparent and the purified effects. These results underscore the need to specify data distributions and ensure identifiability before interpreting model parameters.},
+  html =      {http://proceedings.mlr.press/v108/lengerich20a.html},
+  arxiv={1911.04974},
+  keywords={Interpretable, Generalized Additive Models, Theory},
+  selected = {true},
+  bibtex_show = {true}
+}
+
+@InProceedings{lengerich2019learning,
+  title={Learning Sample-Specific Models with Low-Rank Personalized Regression},
+  author={Lengerich, Benjamin J. and Aragam, Bryon and Xing, Eric P.},
+  journal={Advances in Neural Information Processing Systems (NeurIPS)},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  year={2019},
+  informal_venue = {NeurIPS},
+  abstract = {
+    Modern applications of machine learning (ML) deal with increasingly heterogeneous datasets comprised of data collected from overlapping latent subpopulations. As a result, traditional models trained over large datasets may fail to recognize highly predictive localized effects in favour of weakly predictive global patterns. This is a problem because localized effects are critical to developing individualized policies and treatment plans in applications ranging from precision medicine to advertising. To address this challenge, we propose to estimate sample-specific models that tailor inference and prediction at the individual level. In contrast to classical ML models that estimate a single, complex model (or only a few complex models), our approach produces a model personalized to each sample. These sample-specific models can be studied to understand subgroup dynamics that go beyond coarse-grained class labels. Crucially, our approach does not assume that relationships between samples (e.g. a similarity network) are known a priori. Instead, we use unmodeled covariates to learn a latent distance metric over the samples. We apply this approach to financial, biomedical, and electoral data as well as simulated data and show that sample-specific models provide fine-grained interpretations of complicated phenomena without sacrificing predictive accuracy compared to state-of-the-art models such as deep neural networks.
+  },
+  pdf = {https://proceedings.neurips.cc/paper/2019/file/52d2752b150f9c35ccb6869cbf074e48-Paper.pdf},
+  arxiv = {1910.06939},
+  keywords = {Interpretable, Contextualized},
+  selected = {true},
+  bibtex_show = {true}
+}
+
+@article{wang2018precision,
+  title={Precision Lasso: Accounting for Correlations and Linear Dependencies in High-Dimensional Genomic Data},
+  author={Wang, Haohan and Lengerich, Benjamin J. and Aragam, Bryon and Xing, Eric P},
+  journal={Bioinformatics},
+  volume={35},
+  number={7},
+  pages={1181--1187},
+  year={2018},
+  informal_venue = {Bioinformatics},
+  publisher={Oxford University Press},
+  abstract = {Association studies to discover links between genetic markers and phenotypes are central to bioinformatics. Methods of regularized regression, such as variants of the Lasso, are popular for this task. Despite the good predictive performance of these methods in the average case, they suffer from unstable selections of correlated variables and inconsistent selections of linearly dependent variables. Unfortunately, as we demonstrate empirically, such problematic situations of correlated and linearly dependent variables often exist in genomic datasets and lead to under-performance of classical methods of variable selection. To address these challenges, we propose the Precision Lasso. Precision Lasso is a Lasso variant that promotes sparse variable selection by regularization governed by the covariance and inverse covariance matrices of explanatory variables. We illustrate its capacity for stable and consistent variable selection in simulated data with highly correlated and linearly dependent variables. We then demonstrate the effectiveness of the Precision Lasso to select meaningful variables from transcriptomic profiles of breast cancer patients. Our results indicate that in settings with correlated and linearly dependent variables, the Precision Lasso outperforms popular methods of variable selection such as the Lasso, the Elastic Net and Minimax Concave Penalty (MCP) regression.},
+  html = {https://academic.oup.com/bioinformatics/article/35/7/1181/5089232?login=true},
+  keywords={Statistical Genetics, Genomics},
+  bibtex_show = {true}
+}
+
+@InProceedings{lengerich2018retrofitting,
+  title={Retrofitting Distributional Embeddings to Knowledge Graphs with Functional Relations},
+  author={Lengerich, Benjamin J. and Maas, Andrew and Potts, Christopher},
+  journal={Proceedings of the 27th International Conference on Computational Linguistics (COLING)},
+  booktitle={Proceedings of the 27th International Conference on Computational Linguistics (COLING)},
+  year={2018},
+  informal_venue = {COLING},
+  abstract = {Knowledge graphs are a versatile framework to encode richly structured data relationships, but it can be challenging to combine these graphs with unstructured data. Methods for retrofitting pre-trained entity representations to the structure of a knowledge graph typically assume that entities are embedded in a connected space and that relations imply similarity. However, useful knowledge graphs often contain diverse entities and relations (with potentially disjoint underlying corpora) which do not accord with these assumptions. To overcome these limitations, we present Functional Retrofitting, a framework that generalizes current retrofitting methods by explicitly modeling pairwise relations. Our framework can directly incorporate a variety of pairwise penalty functions previously developed for knowledge graph completion. Further, it allows users to encode, learn, and extract information about relation semantics. We present both linear and neural instantiations of the framework. Functional Retrofitting significantly outperforms existing retrofitting methods on complex knowledge graphs and loses no accuracy on simpler graphs (in which relations do imply similarity). Finally, we demonstrate the utility of the framework by predicting new drug--disease treatment pairs in a large, complex health knowledge graph.},
+  html = {https://aclanthology.org/C18-1205/},
+  arxiv = {1708.00112},
+  keywords = {Natural Language Processing, Knowledge Graphs},
+  bibtex_show = {true}
+}
+
+@article{lengerich2018personalized,
+  author = {Lengerich, Benjamin J. and Aragam, Bryon and Xing, Eric P},
+  title = {Personalized Regression Enables Sample-specific Pan-cancer Analysis},
+  journal = {Bioinformatics},
+  volume = {34},
+  number = {13},
+  pages = {i178-i186},
+  year = {2018},
+  informal_venue = {ISMB},
+  doi = {10.1093/bioinformatics/bty250},
+  URL = {http://dx.doi.org/10.1093/bioinformatics/bty250},
+  eprint = {/oup/backfile/content_public/journal/bioinformatics/34/13/10.1093_bioinformatics_bty250/1/bty250.pdf},
+  html = {http://dx.doi.org/10.1093/bioinformatics/bty250},
+  abstract = {In many applications, inter-sample heterogeneity is crucial to understanding the complex biological processes under study. For example, in genomic analysis of cancers, each patient in a cohort may have a different driver mutation, making it difficult or impossible to identify causal mutations from an averaged view of the entire cohort. Unfortunately, many traditional methods for genomic analysis seek to estimate a single model which is shared by all samples in a population, ignoring this inter-sample heterogeneity entirely. In order to better understand patient heterogeneity, it is necessary to develop practical, personalized statistical models.
+  To uncover this inter-sample heterogeneity, we propose a novel regularizer for achieving patient-specific personalized estimation. This regularizer operates by learning two latent distance metrics—one between personalized parameters and one between clinical covariates—and attempting to match the induced distances as closely as possible. Crucially, we do not assume these distance metrics are already known. Instead, we allow the data to dictate the structure of these latent distance metrics. Finally, we apply our method to learn patient-specific, interpretable models for a pan-cancer gene expression dataset containing samples from more than 30 distinct cancer types and find strong evidence of personalization effects between cancer types as well as between individuals. Our analysis uncovers sample-specific aberrations that are overlooked by population-level methods, suggesting a promising new path for precision analysis of complex diseases such as cancer.},
+  arxiv={https://www.biorxiv.org/content/early/2018/04/05/294496?},
+  keywords = {Interpretable, Contextualized, Statistical Genetics, Genomics, Cancer},
+  selected = {true},
+  bibtex_show = {true}
+}
+
+@article{lee2022ten,
+  title={Ten quick tips for deep learning in biology},
+  author={Lee, Benjamin D and Gitter, Anthony and Greene, Casey S and Raschka, Sebastian and Maguire, Finlay and Titus, Alexander J and Kessler, Michael D and Lee, Alexandra J and Chevrette, Marc G and Stewart, Paul Allen and Britto-Borges, Thiago and Cofer, Evan M. Cofer and Yu, Kun-Hsing and Carmona, Juan Jose and Fertig, Elana J. and Kalinin, Alexandr A. and Signal, Brandon and Lengerich, Benjamin J. and Triche, Timothy J. Jr. and Boca, Simina M.},
+  journal={PLoS computational biology},
+  informal_venue = {PLoS CompBio},
   volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers}
+  number={3},
+  pages={e1009803},
+  year={2022},
+  publisher={Public Library of Science San Francisco, CA USA},
+  html={https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009803},
+  keywords={Deep Learning, Biology, Computational Genomics},
+  bibtex_show = {true}
 }
 
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein, A. and Podolsky, B. and Rosen, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.},
-  location={New Jersey},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
-  altmetric={248277},
-  dimensions={true},
-  google_scholar_id={qyhmnyLat1gC},
-  video={https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ},
-  additional_info={. *More Information* can be [found here](https://github.com/alshedivat/al-folio/)},
-  selected={true}
+@article{ching2018opportunities,
+  author = {Ching, Travers and Himmelstein, Daniel S. and Beaulieu-Jones, Brett K. and Kalinin, Alexandr A. and Do, Brian T. and Way, Gregory P. and Ferrero, Enrico and Agapow, Paul-Michael and Zietz, Michael and Hoffman, Michael M. and Xie, Wei and Rosen, Gail L. and Lengerich, Benjamin J. and Israeli, Johnny and Lanchantin, Jack and Woloszynek, Stephen and Carpenter, Anne E. and Shrikumar, Avanti and Xu, Jinbo and Cofer, Evan M. and Lavender, Christopher A. and Turaga, Srinivas C. and Alexandari, Amr M. and Lu, Zhiyong and Harris, David J. and DeCaprio, Dave and Qi, Yanjun and Kundaje, Anshul and Peng, Yifan and Wiley, Laura K. and Segler, Marwin H. S. and Boca, Simina M. and Swamidass, S. Joshua and Huang, Austin and Gitter, Anthony and Greene, Casey S.},
+  title = {Opportunities and Obstacles for Deep Learning in Biology and Medicine},
+  volume = {15},
+  number = {141},
+  year = {2018},
+  doi = {10.1098/rsif.2017.0387},
+  publisher = {The Royal Society},
+  informal_venue = {JRSI},
+  abstract = {Deep learning describes a class of machine learning algorithms that are capable of combining raw inputs into layers of intermediate features. These algorithms have recently shown impressive results across a variety of domains. Biology and medicine are data-rich disciplines, but the data are complex and often ill-understood. Hence, deep learning techniques may be particularly well suited to solve problems of these fields. We examine applications of deep learning to a variety of biomedical problems{\textemdash}patient classification, fundamental biological processes and treatment of patients{\textemdash}and discuss whether deep learning will be able to transform these tasks or if the biomedical sphere poses unique challenges. Following from an extensive literature review, we find that deep learning has yet to revolutionize biomedicine or definitively resolve any of the most pressing challenges in the field, but promising advances have been made on the prior state of the art. Even though improvements over previous baselines have been modest in general, the recent progress indicates that deep learning methods will provide valuable means for speeding up or aiding human investigation. Though progress has been made linking a specific neural network{\textquoteright}s prediction to input features, understanding how users should interpret these models to make testable hypotheses about the system under study remains an open challenge. Furthermore, the limited amount of labelled data for training presents problems in some domains, as do legal and privacy constraints on work with sensitive health records. Nonetheless, we foresee deep learning enabling changes at both bench and bedside with the potential to transform several areas of biology and medicine.},
+  issn = {1742-5689},
+  URL = {http://rsif.royalsocietypublishing.org/content/15/141/20170387},
+  eprint = {http://rsif.royalsocietypublishing.org/content/15/141/20170387.full.pdf},
+  journal = {Journal of The Royal Society Interface},
+  pdf = {http://rsif.royalsocietypublishing.org/content/15/141/20170387.full.pdf},
+  html = {http://www.biorxiv.org/content/biorxiv/early/2017/05/28/142760.full.pdf},
+  keywords = {Deep Learning, Biology, Computational Genomics},
+  bibtex_show = {true}
 }
 
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
+@article{bosschieter2023interpretable,
+  title={Interpretable Predictive Models to Understand Risk Factors for Maternal and Fetal Outcomes},
+  author={Bosschieter, Tomas M. and Xu, Zifei and Lan, Hui and Lengerich, Benjamin J. and Nori, Harsha and Painter, Ian and Souter, Vivienne and Caruana, Rich},
+  abstract={Although most pregnancies result in a good outcome, complications are not uncommon and can be associated with serious implications for mothers and babies. Predictive modeling has the potential to improve outcomes through a better understanding of risk factors, heightened surveillance for high-risk patients, and more timely and appropriate interventions, thereby helping obstetricians deliver better care. We identify and study the most important risk factors for four types of pregnancy complications: (i) severe maternal morbidity, (ii) shoulder dystocia, (iii) preterm preeclampsia, and (iv) antepartum stillbirth. We use an Explainable Boosting Machine (EBM), a high-accuracy glass-box learning method, for the prediction and identification of important risk factors. We undertake external validation and perform an extensive robustness analysis of the EBM models. EBMs match the accuracy of other black-box ML methods, such as deep neural networks and random forests, and outperform logistic regression, while being more interpretable. EBMs prove to be robust. The interpretability of the EBM models reveal surprising insights into the features contributing to risk (e.g., maternal height is the second most important feature for shoulder dystocia) and may have potential for clinical application in the prediction and prevention of serious complications in pregnancy.},
+  year={2023},
+  journal={Journal of Healthcare Informatics Research},
+  pdf={https://link.springer.com/article/10.1007/s41666-023-00151-4},
+  informal_venue = {JHIR},
+  keywords={Healthcare, Pregnancy},
+  bibtex_show = {true}
 }
 
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.},
-  volume={17},
-  pages={549--560},
-  year={1905}
+@article{bosschieter2022smfm2,
+  title={Unique insights into risk factors for antepartum stillbirth using explainable AI},
+  author={Bosschieter, Tomas and Xu, Zifei and Lan, Hui and Lengerich, Benjamin and Nori, Harsha and Sitcov, Kristin and Painter, Ian and Souter, Vivienne and Caruana, Rich},
+  journal={American Journal of Obstetrics \& Gynecology},
+  informal_venue = {SMFM},
+  volume={},
+  number={},
+  pages={},
+  year={2022},
+  publisher={Elsevier},
+  pdf={https://www.ajog.org/article/S0002-9378(22)01587-3/abstract},
+  keywords={Healthcare, Pregnancy},
+  bibtex_show = {true}
 }
 
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
+@article{lan2022smfm,
+  title={Understanding risk factors for shoulder dystocia using interpretable machine learning},
+  author={Lan, Hui and Xu, Zifei and Bosschieter, Tomas and Lengerich, Benjamin and Nori, Harsha and Sitcov, Kristin and Painter, Ian and Souter, Vivienne and Caruana, Rich},
+  journal={American Journal of Obstetrics \& Gynecology},
+  informal_venue = {SMFM},
+  volume={},
+  number={},
+  pages={},
+  year={2022},
+  publisher={Elsevier},
+  pdf={https://www.ajog.org/article/S0002-9378(22)02139-1/abstract},
+  keywords={Healthcare, Pregnancy},
+  bibtex_show = {true}
 }
 
-@Article{einstein1905photoelectriceffect,
-  bibtex_show={true},
-  abbr={Ann. Phys.},
-  title="{{\"U}ber einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt}",
-  author={Albert Einstein},
-  abstract={This is the abstract text.},
-  journal={Ann. Phys.},
-  volume={322},
-  number={6},
-  pages={132--148},
-  year={1905},
-  doi={10.1002/andp.19053220607},
-  award={Albert Einstein receveid the **Nobel Prize in Physics** 1921 *for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect*},
-  award_name={Nobel Prize}
+@article{bosschieter2022smfm,
+  title={Preterm preeclampsia prediction using intelligible machine learning},
+  author={Bosschieter, Tomas and Xu, Zifei and Lan, Hui and Lengerich, Benjamin and Nori, Harsha and Sitcov, Kristin and Painter, Ian and Souter, Vivienne and Caruana, Rich},
+  journal={American Journal of Obstetrics \& Gynecology},
+  informal_venue = {SMFM},
+  volume={},
+  number={},
+  pages={},
+  year={2022},
+  publisher={Elsevier},
+  pdf={https://www.ajog.org/article/S0002-9378(22)01596-4/abstract},
+  keywords={Healthcare, Pregnancy},
+  bibtex_show = {true}
 }
 
-@book{przibram1967letters,
-  bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif},
-  abbr={Vision}
+@article{xu2022smfm,
+  title={Predicting severe maternal morbidity at admission for delivery using intelligible machine learning},
+  author={Xu, Zifei and Bosschieter, Tomas and Lan, Hui and Lengerich, Benjamin and Nori, Harsha and Sitcov, Kristin and Painter, Ian and Souter, Vivienne and Caruana, Rich},
+  journal={American Journal of Obstetrics \& Gynecology},
+  informal_venue = {SMFM},
+  volume={},
+  number={},
+  pages={},
+  year={2022},
+  publisher={Elsevier},
+  pdf={https://www.ajog.org/article/S0002-9378(22)01588-5/abstract},
+  keywords={Healthcare, Pregnancy},
+  bibtex_show = {true}
+}
+
+
+@article{lengerich2021length,
+  title={Length of labor and severe maternal morbidity in the NTSV population},
+  author={Lengerich, Benjamin J. and Caruana, Rich and Weeks, William B and Painter, Ian and Spencer, Sydney and Sitcov, Kristin and Daly, Colleen and Souter, Vivienne},
+  journal={American Journal of Obstetrics \& Gynecology},
+  volume={224},
+  number={2},
+  pages={S33},
+  year={2021},
+  publisher={Elsevier},
+  pdf={https://www.ajog.org/article/S0002-9378(20)31386-7/pdf},
+  keywords={Healthcare, Pregnancy},
+  bibtex_show = {true}
+}
+
+@article{lengerich2021insights,
+  title={Insights into severe maternal morbidity in the NTSV population},
+  author={Lengerich, Benjamin J. and Caruana, Rich and Weeks, William B and Painter, Ian and Spencer, Sydney and Sitcov, Kristin and Daly, Colleen and Souter, Vivienne},
+  journal={American Journal of Obstetrics \& Gynecology},
+  volume={224},
+  number={2},
+  pages={S629--S630},
+  year={2021},
+  publisher={Elsevier},
+  pdf={https://www.ajog.org/article/S0002-9378(20)32418-2/fulltext},
+  keywords={Healthcare, Pregnancy},
+  bibtex_show = {true}
+}
+
+@article{bordt2024data,
+  author = {Bordt, Sebastian and Lengerich, Ben and Nori, Harsha and Caruana, Rich},
+  title = {Data Science with LLMs and Interpretable Models},
+  journal = {AAAI Explainable AI for Science},
+  year = {2023},
+  informal_venue = {AAAI XAI4Sci},
+  abstract = {Recent years have seen important advances in the building of interpretable models, machine learning models that are designed to be easily understood by humans. In this work, we show that large language models (LLMs) are remarkably good at working with interpretable models, too. In particular, we show that LLMs can describe, interpret, and debug Generalized Additive Models (GAMs). Combining the flexibility of LLMs with the breadth of statistical patterns accurately described by GAMs enables dataset summarization, question answering, and model critique. LLMs can also improve the interaction between domain experts and interpretable models, and generate hypotheses about the underlying phenomenon. We release TalkToEBM as an open-source LLM-GAM interface.},
+  keywords = {Interpretable, LLMs},
+  selected = {true},
+  bibtex_show = {true}
+}
+
+@article{hrovatin2023evaluation,
+  author = {Hrovatin, Karin and Ali Moinfar, Amir and Lapuerta, Alejandro Tejada and Zappia, Luke and Lengerich, Ben and Kellis, Manolis and Theis, Fabian J.},
+  title = {Integrating single-cell RNA-seq datasets with substantial batch effects},
+  year = {2023},
+  html = {https://www.biorxiv.org/content/10.1101/2023.11.03.565463v2},
+  bibtex_show = {true}
+}
+
+@article{lengerich2023llms,
+  author = {Lengerich, Benjamin J. and Bordt, Sebastian and Nori, Harsha and Nunnally, Mark E. and Aphinyanaphongs, Yin and Kellis, Manolis and Caruana, Rich},
+  title = {LLMs Understand Glass-Box Models, Discover Surprises, and Suggest Repairs},
+  year = {2023},
+  arxiv = {2308.01157},
+  bibtex_show = {true}
+}
+
+@article{deuschel2024contextualized,
+    title={Contextualized Policy Recovery: Modeling and Interpreting Medical Decisions with Adaptive Imitation Learning},
+    author={Deuschel, Jannik and Ellington, Caleb and Luo, Yingtao and Lengerich, Ben and Friederich, Pascal and Xing, Eric},
+    informal_venue = {ICML},
+    year={2024},
+    arxiv={2310.07918},
+    abstract={Interpretable policy learning seeks to estimate intelligible decision policies from observed actions; however, existing models fall short by forcing a tradeoff between accuracy and interpretability. This tradeoff limits data-driven interpretations of human decision-making process. e.g. to audit medical decisions for biases and suboptimal practices, we require models of decision processes which provide concise descriptions of complex behaviors. Fundamentally, existing approaches are burdened by this tradeoff because they represent the underlying decision process as a universal policy, when in fact human decisions are dynamic and can change drastically with contextual information. Thus, we propose Contextualized Policy Recovery (CPR), which re-frames the problem of modeling complex decision processes as a multi-task learning problem in which complex decision policies are comprised of context-specific policies. CPR models each context-specific policy as a linear observation-to-action mapping, and generates new decision models on-demand as contexts are updated with new observations. CPR is compatible with fully offline and partially observable decision environments, and can be tailored to incorporate any recurrent black-box model or interpretable decision model. We assess CPR through studies on simulated and real data, achieving state-of-the-art performance on the canonical tasks of predicting antibiotic prescription in intensive care units (+22% AUROC vs. previous SOTA) and predicting MRI prescription for Alzheimer's patients (+7.7% AUROC vs. previous SOTA). With this improvement in predictive performance, CPR closes the accuracy gap between interpretable and black-box methods for policy learning, allowing high-resolution exploration and analysis of context-specific decision models.},
+    journal={International Conference on Machine Learning (ICML)}
+}
+
+@InProceedings{caruana2021data,
+  title={Data-Driven Patterns in Protective Effects of Ibuprofen and Ketorolac on Hospitalized Covid-19 Patients},
+  author={Caruana, Rich and Lengerich, Benjamin and Aphinyanaphongs, Yin},
+  journal={American Medical Informatics Association (AMIA) Annual Symposium},
+  year={2021},
+  html={https://www.medrxiv.org/content/10.1101/2021.06.15.21258991v1},
+  abstract={The impact of nonsteroidal anti-inflammatory drugs (NSAIDs) on patients with Covid-19 has been unclear. A major reason for this uncertainty is the confounding between treatments, patient comorbidities, and illness severity. Here, we perform an observational analysis of over 3000 patients hospitalized for Covid-19 in a New York hospital system to identify the relationship between in-patient treatment with Ibuprofen or Ketorolac and mortality. Our analysis finds evidence consitent with a protective effect for Ibuprofen and Ketorolac, with evidence stronger for a protective effect of Ketorolac than for a protective effect of Ibuprofen.},
+  keywords={Healthcare, Covid-19},
+  bibtex_show = {true}
 }

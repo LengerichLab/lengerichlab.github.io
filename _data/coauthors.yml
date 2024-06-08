@@ -1,34 +1,51 @@
-"adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+"lengerich":
+  - firstname: ["Ben", "Benjamin", "Benjamin J.", "Benjamin J"]
+    url: https://web.mit.edu/~blengeri/www/
 
-"podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+"ellington":
+  - firstname: ["Caleb", "Caleb N.", "Caleb N"]
+    url: https://cnellington.github.io/
 
-"rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+"xing":
+  - firstname: ["Eric", "Eric P.", "Eric P"]
+    url: https://www.cs.cmu.edu/~epxing/
 
-"bach":
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+"kellis":
+  - firstname: ["Manolis"]
+    url: https://compbio.mit.edu/
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+"caruana":
+  - firstname: ["Rich"]
+    url: https://www.microsoft.com/en-us/research/people/rcaruana/
 
-"przibram":
-  - firstname: ["Karl"]
-    url: https://link.springer.com/article/10.1007/s00016-019-00242-z
+"aragam":
+  - firstname: ["Bryon"]
+    url: https://www.bryonaragam.com/
 
-"schrodinger":
-  - firstname: ["Erwin"]
-    url: https://en.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger
+"deuschel":
+  - firstname: ["Jannik"]
+    url: https://www.linkedin.com/in/jadeusc
 
-"lorentz":
-  - firstname: ["Hendrik Antoon"]
-    url: https://en.wikipedia.org/wiki/Hendrik_Lorentz
+"bosschieter":
+  - firstname: ["Tomas M.", "Tomas"]
+    url: https://profiles.stanford.edu/tomas-bosschieter
 
-"planck":
-  - firstname: ["Max"]
-    url: https://en.wikipedia.org/wiki/Max_Planck
+"bordt":
+  - firstname: ["Sebastian"]
+    url: https://sbordt.github.io/
+
+"hrovatin":
+  - firstname: ["Karin"]
+    url: https://www.linkedin.com/in/karin-hrovatin-3817a6150/
+
+"nori":
+  - firstname: ["Harsha"]
+    url: https://www.linkedin.com/in/harshanori/
+
+"rubbi":
+  - firstname: ["Andrea"]
+    url: https://andrearubbi.com/
+
+"luo":
+  - firstname: ["Yingtao"]
+    url: https://yingtaoluo.github.io/
