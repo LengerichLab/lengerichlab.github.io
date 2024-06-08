@@ -8,7 +8,9 @@ nav_order: 4
 ---
 
 ## Knowledge base
+
 - [Reading List](https://github.com/LengerichLab/ReadingList)
+- [CompBio Datasets for ML](https://github.com/LengerichLab/CompBioDatasetsForMachineLearning)
 
 ## Software tools
 
