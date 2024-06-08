@@ -11,3 +11,6 @@
 
 - Update [`bibliography/papers.bib`](./bibliography/papers.bib) when papers are published.
   - Include as many of these fields as possible: `abstract`, `altmetric`, `arxiv`, `bibtex_show`, `blog`, `code`, `dimensions`, `doi`, `eprint`, `html`, `isbn`, `pdf`, `pmid`, `poster`, `slides`, `supp`, `video`, and `website`.
+
+## TODO:
+- [ ] Find a way to link private pages (e.g. lab user guide) without messing up the link checker.
