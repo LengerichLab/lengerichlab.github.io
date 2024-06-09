@@ -17,7 +17,7 @@ Quick links:
 - [Our People](./people)
 - [Our Publications](./publications)
 - [Our Current Projects](./projects)
-- [Open positions](https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/edit?usp=sharing)
-- [Apply to join us](https://docs.google.com/forms/d/e/1FAIpQLSctsfvSMoNk9YnCYSGWTYE2he-dR3lpD9QOmQaRtCvwH3X7Hg/viewform)
+- [__Open positions__](https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/edit?usp=sharing)
+- [__Apply to join us__](https://docs.google.com/forms/d/e/1FAIpQLSctsfvSMoNk9YnCYSGWTYE2he-dR3lpD9QOmQaRtCvwH3X7Hg/viewform)
 
 <img src="/assets/img/madison.jpeg" alt="Madison, Wisconsin" width="100%"/>
