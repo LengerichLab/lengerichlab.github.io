@@ -14,10 +14,10 @@ We develop ML methods and AI systems to advance precision medicine.
 
 Quick links:
 
-- [Our People](./people)
-- [Our Publications](./publications)
-- [Our Current Projects](./projects)
-- [__Open positions__](https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/edit?usp=sharing)
-- [__Apply to join us__](https://docs.google.com/forms/d/e/1FAIpQLSctsfvSMoNk9YnCYSGWTYE2he-dR3lpD9QOmQaRtCvwH3X7Hg/viewform)
+- [Our People](/people)
+- [Our Publications](/publications)
+- [Our Current Projects](/projects)
+- [<strong>Open positions</strong>](https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/edit?usp=sharing)
+- [<strong>Apply to join us</strong>](https://docs.google.com/forms/d/e/1FAIpQLSctsfvSMoNk9YnCYSGWTYE2he-dR3lpD9QOmQaRtCvwH3X7Hg/viewform)
 
 <img src="/assets/img/madison.jpeg" alt="Madison, Wisconsin" width="100%"/>
