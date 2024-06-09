@@ -10,9 +10,10 @@ social: false # includes social icons at the bottom of the page
 ---
 
 Welcome to the Lengerich lab at the University of Wisconsin-Madison.
-We develop ML methods and AI systems to advance precision medicine. 
+We develop ML methods and AI systems to advance precision medicine.
 
 Quick links:
+
 - [Our People](./people)
 - [Our Publications](,/publications)
 - [Our Current Projects](./projects)
