@@ -13,6 +13,9 @@ nav_order: 4
 - [CompBio Datasets for ML](https://github.com/LengerichLab/CompBioDatasetsForMachineLearning)
 - [Clinical ML Zoo](https://github.com/LengerichLab/ClinicalMLZoo)
 
+### Templates
+- [Latex templates for faculty applications](https://www.overleaf.com/read/qdrzkgjkmzqc#b3bdcc)
+
 ### Software tools
 
 {% if site.data.repositories.github_repos %}
