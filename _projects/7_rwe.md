@@ -10,7 +10,9 @@ related_publications: true
 
 {% include figure.liquid loading="eager" path="assets/img/rwe.jpeg" title="Real-world evidence" class="img-fluid rounded z-depth-1" %}
 
-Electronic health records (EHRs) are observational data of complex systems -- patient behaviors, doctor behavior, biological causes, and interventions. As a result, there are surprises and statistical patterns that contradict underlying biological causality. Revealing these surprises and statistical patterns can reveal opportunities to improve medicine.
+Electronic health records (EHRs) are observational data of complex systems -- patient behaviors, doctor behavior, biological causes, and interventions. As a result, there are surprises and statistical patterns that contradict underlying biological causality. We are building AI systems that reveal these surprises in statistical patterns and reveal opportunities to improve medicine.
 
 {% nocite lengerich2022automated %}
 {% nocite caruana2021data %}
+
+<br /><br />
