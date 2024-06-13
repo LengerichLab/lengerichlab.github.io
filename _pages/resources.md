@@ -14,6 +14,7 @@ nav_order: 4
 - [Clinical ML Zoo](https://github.com/LengerichLab/ClinicalMLZoo)
 
 ### Templates
+
 - [Latex templates for faculty applications](https://www.overleaf.com/read/qdrzkgjkmzqc#b3bdcc)
 
 ### Software tools
