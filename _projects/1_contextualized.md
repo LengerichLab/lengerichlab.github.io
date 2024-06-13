@@ -23,4 +23,5 @@ We've built a Python package {% cite ellington2024contextualized %} and applied 
         <li>Indivdual treatment effects {% cite lengerich2022automated %}</li>
         <li>Policy Recovery {% cite deuschel2024contextualized %}</li>
     </ul>
+and are continuing to build more tools with context-adaptive modeling.
 </p>
