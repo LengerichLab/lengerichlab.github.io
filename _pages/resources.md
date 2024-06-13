@@ -7,11 +7,15 @@ nav: true
 nav_order: 4
 ---
 
-### Knowledge base
+### Library
 
 - [Reading List](https://github.com/LengerichLab/ReadingList)
 - [CompBio Datasets for ML](https://github.com/LengerichLab/CompBioDatasetsForMachineLearning)
 - [Clinical ML Zoo](https://github.com/LengerichLab/ClinicalMLZoo)
+
+### Advice
+
+- [Thoughts from my Faculty Application Experience](https://benlengerich.medium.com/38f1a29c715e)
 
 ### Templates
 
