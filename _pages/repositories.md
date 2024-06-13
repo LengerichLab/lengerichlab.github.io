@@ -7,13 +7,13 @@ nav: true
 nav_order: 4
 ---
 
-## Knowledge base
+### Knowledge base
 
 - [Reading List](https://github.com/LengerichLab/ReadingList)
 - [CompBio Datasets for ML](https://github.com/LengerichLab/CompBioDatasetsForMachineLearning)
 - [Clinical ML Zoo](https://github.com/LengerichLab/ClinicalMLZoo)
 
-## Software tools
+### Software tools
 
 {% if site.data.repositories.github_repos %}
 
@@ -24,7 +24,7 @@ nav_order: 4
 </div>
 {% endif %}
 
-## GitHub users
+### GitHub users
 
 {% if site.data.repositories.github_users %}
 
