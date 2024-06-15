@@ -26,40 +26,14 @@ nav_order: 4
 - [Latex templates for faculty applications](https://www.overleaf.com/read/qdrzkgjkmzqc#b3bdcc)
 
 ### Software tools
+ML:
+- [ContextualizedML](https://contextualized.ml) - An SKLearn-style toolbox for estimating and analyzing models, distributions, and functions with context-specific parameters
+- [TalkToEBM](https://github.com/interpretml/TalkToEBM) - A Natural Language Interface to Explainable Boosting Machines (EBMs)
+- [EBM Utils](https://github.com/LengerichLab/ebm_utils) - Utilities for EBM
+- [GAM Purification](https://github.com/LengerichLab/gam_purification) - Tools for purifying additive models with interaction effects into identifiable representations.
 
-{% if site.data.repositories.github_repos %}
+EHR: 
+- [clEHRity](https://github.com/LengerichLab/clEHRity) - Automatically finding surprises in EHRs
 
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for repo in site.data.repositories.github_repos %}
-    {% include repository/repo.liquid repository=repo %}
-  {% endfor %}
-</div>
-{% endif %}
-
-### GitHub users
-
-{% if site.data.repositories.github_users %}
-
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for user in site.data.repositories.github_users %}
-    {% include repository/repo_user.liquid username=user %}
-  {% endfor %}
-</div>
-
----
-
-{% if site.repo_trophies.enabled %}
-{% for user in site.data.repositories.github_users %}
-{% if site.data.repositories.github_users.size > 1 %}
-
-  <h4>{{ user }}</h4>
-  {% endif %}
-  <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% include repository/repo_trophies.liquid username=user %}
-  </div>
-
----
-
-{% endfor %}
-{% endif %}
-{% endif %}
+Misc:
+- [ConferenceCountdown](https://github.com/LengerichLab/ConferenceCountdown) - A countdown website for ML/CompBio conference deadlines.
