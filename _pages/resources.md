@@ -26,14 +26,18 @@ nav_order: 4
 - [Latex templates for faculty applications](https://www.overleaf.com/read/qdrzkgjkmzqc#b3bdcc)
 
 ### Software tools
+
 ML:
+
 - [ContextualizedML](https://contextualized.ml) - An SKLearn-style toolbox for estimating and analyzing models, distributions, and functions with context-specific parameters
 - [TalkToEBM](https://github.com/interpretml/TalkToEBM) - A Natural Language Interface to Explainable Boosting Machines (EBMs)
 - [EBM Utils](https://github.com/LengerichLab/ebm_utils) - Utilities for EBM
 - [GAM Purification](https://github.com/LengerichLab/gam_purification) - Tools for purifying additive models with interaction effects into identifiable representations.
 
-EHR: 
+EHR:
+
 - [clEHRity](https://github.com/LengerichLab/clEHRity) - Automatically finding surprises in EHRs
 
 Misc:
+
 - [ConferenceCountdown](https://github.com/LengerichLab/ConferenceCountdown) - A countdown website for ML/CompBio conference deadlines.
