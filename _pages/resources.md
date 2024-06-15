@@ -8,6 +8,7 @@ nav_order: 4
 ---
 
 ### Internal resources
+
 - [Lengerich Lab user guide](https://docs.google.com/document/d/1HMHeX9qSOq6PFn_cW47b3tzdJKK6QZGE39u25vsA9QA/edit?usp=sharing)
 
 ### Compilations
