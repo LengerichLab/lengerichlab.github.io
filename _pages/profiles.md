@@ -2,7 +2,7 @@
 layout: profiles
 permalink: /people/
 title: People
-description: Our people
+description: <h3>Interested in joining? See our <a href=https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo>open positions here</a>, and <a href=https://docs.google.com/forms/d/e/1FAIpQLSctsfvSMoNk9YnCYSGWTYE2he-dR3lpD9QOmQaRtCvwH3X7Hg/viewform>Apply here</a>.</h3>
 nav: true
 nav_order: 2
 
@@ -19,11 +19,6 @@ profiles:
 ---
 
 ---
-
-## Open positions:
-
-- Read about our [open positions here](https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo).
-- [Apply here](https://docs.google.com/forms/d/e/1FAIpQLSctsfvSMoNk9YnCYSGWTYE2he-dR3lpD9QOmQaRtCvwH3X7Hg/viewform).
 
 ## Extended team members [active projects]:
 
