@@ -2,7 +2,7 @@
 layout: profiles
 permalink: /people/
 title: People
-description: Interested in joining? <a href=https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/>Apply here</a>.
+description: <h2> Interested in joining? <a href=https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/>Apply here</a>.<h2>
 nav: true
 nav_order: 2
 
