@@ -14,7 +14,7 @@ profiles:
     content: people/lengerich.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p>Medical Sciences Center</p>
+      <p>7278 Medical Sciences Center</p>
       <p><a href=https://web.mit.edu/~blengeri/www/>Personal website</a></p>
 ---
 
