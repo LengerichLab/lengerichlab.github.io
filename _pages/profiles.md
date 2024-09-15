@@ -29,6 +29,7 @@ profiles:
 - [Jannik Deuschel](https://scholar.google.com/citations?user=eGUxrfQAAAAJ), MS student at Karlsruhe Institut of Technology, [[Context-adaptive systems](/projects/1_contextualized)]
 - Siddharth Nirgudkar, High-school student, [[Context-adaptive systems](/projects/1_contextualized)]
 - [Sazan Mahbub](https://github.com/Sazan-Mahbub), PhD student at CMU, [[Foundation models as context](/projects/2_foundation_models)]
+- [Jingyun Jia](https://clouddelta.github.io/), PhD student at UW-Madison, [[Context-adaptive systems](/projects/1_contextualized)]
 
 ---
 
