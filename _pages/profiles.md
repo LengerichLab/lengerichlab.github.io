@@ -23,11 +23,6 @@ profiles:
     image_circular: false # crops the image to make it circular
 ---
 
-## UW-Madison team members [main projects]:
-- [Jingyun Jia](https://clouddelta.github.io/), PhD student in Statistics, 
-
----
-
 ## Extended team members [active projects]:
 
 - [Caleb Ellington](https://cnellington.github.io/), PhD student at CMU, [[Context-adaptive systems](/projects/1_contextualized), [Genomics](/projects/5_genomics)]
