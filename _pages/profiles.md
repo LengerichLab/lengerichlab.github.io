@@ -16,8 +16,11 @@ profiles:
     more_info: >
       <p>7278 Medical Sciences Center</p>
       <p><a href=https://web.mit.edu/~blengeri/www/>Personal website</a></p>
----
 
+  - align: left
+    image: profiles/jia.jpg
+    content: people/jia.md
+    image_circular: false # crops the image to make it circular
 ---
 
 ## Extended team members [active projects]:
