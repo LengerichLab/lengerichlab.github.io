@@ -16,7 +16,15 @@ profiles:
     more_info: >
       <p>Medical Sciences Center</p>
       <p><a href=https://web.mit.edu/~blengeri/www/>Personal website</a></p>
+
+  - align: left
+    image: profiles/jia.jpg
+    content: people/jia.md
+    image_circular: false # crops the image to make it circular
 ---
+
+## UW-Madison team members [main projects]:
+- [Jingyun Jia](https://clouddelta.github.io/), PhD student in Statistics, 
 
 ---
 
