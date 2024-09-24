@@ -27,6 +27,7 @@ nav_order: 4
 ### Templates
 
 - [Latex templates for faculty applications](https://www.overleaf.com/read/qdrzkgjkmzqc#b3bdcc)
+- [Latex template for preprints](https://www.overleaf.com/read/cbkczmhxbkgj#2a2fc3)
 
 ### Software tools
 
