@@ -11,7 +11,7 @@ nav_order: 4
 
 - [Lengerich Lab user guide](https://docs.google.com/document/d/1HMHeX9qSOq6PFn_cW47b3tzdJKK6QZGE39u25vsA9QA/edit?usp=sharing)
 - [Lengerich Lab guide for AWS and remote Jupyter](https://docs.google.com/document/d/1CdVA_doTJZohg9dB8UhPHCgRuOtmLTAvCRV56IqBKvE/edit?usp=sharing)
-  
+
 ---
 
 ### Compilations
