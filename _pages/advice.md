@@ -1,13 +1,10 @@
 ---
 layout: page
-permalink: /advice/
+permalink: /resources/advice/
 title: Advice for Prospective Students
-description: Advice for Prospective Students
-nav: true
-nav_order: 6
+description: 
+nav: false
 ---
-
-# Advice for Prospective Students
 
 I'm glad you're considering pursuing graduate studies and potentially joining our research community.
 Here is some advice to help you navigate the admissions process effectively and understand the expectations of faculty members during this period.
