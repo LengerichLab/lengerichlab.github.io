@@ -2,7 +2,7 @@
 layout: page
 permalink: /resources/advice/
 title: Advice for Prospective Students
-description: 
+description:
 nav: false
 ---
 
