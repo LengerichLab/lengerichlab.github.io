@@ -20,4 +20,20 @@ Quick links:
 - <a href="https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/edit?usp=sharing" class="important-link">Open positions</a>
 - <a href="https://docs.google.com/forms/d/e/1FAIpQLSctsfvSMoNk9YnCYSGWTYE2he-dR3lpD9QOmQaRtCvwH3X7Hg/viewform" class="important-link">Apply to join us</a>
 
+<form
+  action="https://buttondown.com/api/emails/embed-subscribe/lengerichlab"
+  method="post"
+  target="popupwindow"
+  onsubmit="window.open('https://buttondown.com/lengerichlab', 'popupwindow')"
+  class="embeddable-buttondown-form"
+>
+  <label for="bd-email">Enter your email</label>
+  <input type="email" name="email" id="bd-email" />
+  
+  <input type="submit" value="Subscribe" />
+  <p>
+    <a href="https://buttondown.com/refer/lengerichlab" target="_blank">Subscribe to our semester updates!</a>
+  </p>
+</form>
+
 <img src="/assets/img/madison.jpeg" alt="Madison, Wisconsin" width="100%"/>
