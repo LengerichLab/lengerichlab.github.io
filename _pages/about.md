@@ -27,13 +27,10 @@ Quick links:
   onsubmit="window.open('https://buttondown.com/lengerichlab', 'popupwindow')"
   class="embeddable-buttondown-form"
 >
-  <label for="bd-email">Enter your email</label>
+  <label for="bd-email">Subscribe to our semester updates:</label>
   <input type="email" name="email" id="bd-email" />
   
   <input type="submit" value="Subscribe" />
-  <p>
-    <a href="https://buttondown.com/refer/lengerichlab" target="_blank">Subscribe to our semester updates!</a>
-  </p>
 </form>
 
 <img src="/assets/img/madison.jpeg" alt="Madison, Wisconsin" width="100%"/>
