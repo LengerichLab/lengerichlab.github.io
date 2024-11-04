@@ -17,7 +17,6 @@ Quick links:
 - [Our People](/people)
 - [Our Publications](/publications)
 - [Our Current Projects](/projects)
-- <a href="https://docs.google.com/document/d/1BB7WrFH0W7Bg8biU7tH_HLGGAWvx0f87jfhJf1SaBOo/edit?usp=sharing" class="important-link">Open positions</a>
 - <a href="https://docs.google.com/forms/d/e/1FAIpQLSctsfvSMoNk9YnCYSGWTYE2he-dR3lpD9QOmQaRtCvwH3X7Hg/viewform" class="important-link">Apply to join us</a>
 
 <form
@@ -27,7 +26,7 @@ Quick links:
   onsubmit="window.open('https://buttondown.com/lengerichlab', 'popupwindow')"
   class="embeddable-buttondown-form"
 >
-  <label for="bd-email">Subscribe to our semester updates:</label>
+  <label for="bd-email">Subscribe to email updates (semesterly):</label>
   <input type="email" name="email" id="bd-email" />
   
   <input type="submit" value="Subscribe" />
