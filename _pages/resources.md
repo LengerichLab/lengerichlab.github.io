@@ -18,7 +18,6 @@ nav_order: 4
 
 - [Reading list](https://github.com/LengerichLab/ReadingList)
 - [CompBio datasets for ML](https://github.com/LengerichLab/CompBioDatasetsForMachineLearning)
-- [Clinical ML Zoo](https://github.com/LengerichLab/ClinicalMLZoo)
 
 ### Advice
 
