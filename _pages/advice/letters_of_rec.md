@@ -6,8 +6,6 @@ description:
 nav: false
 ---
 
-# Advice for Requesting Letters of Recommendation
-
 The best recommendation letters don’t just say you’re great—they show it. Strong letters give concrete examples:  
 *"Ben is a clear thinker, which he demonstrated when tackling project X. He designed Y approach, which led to A, B, and C."*  
 
