@@ -14,16 +14,17 @@ nav_order: 4
 
 ---
 
-### Compilations
-
-- [Reading list](https://github.com/LengerichLab/ReadingList)
-- [CompBio datasets for ML](https://github.com/LengerichLab/CompBioDatasetsForMachineLearning)
-
 ### Advice
 
 - [Thoughts from my Faculty Application Experience](https://benlengerich.medium.com/38f1a29c715e)
 - [A few lessons learned from a few years in ML research](https://benlengerich.medium.com/a-few-lessons-learned-from-a-few-years-in-ml-research-8f6f88f97e61)
-- [Advice to Prospective Students](https://lengerichlab.github.io/resources/advice/)
+- [Advice to Prospective Students](https://lengerichlab.github.io/resources/advice/prospective_students)
+- [Advice on Letters of Recommendation](https://lengerichlab.github.io/resources/advice/letters_of_rec)
+
+### Compilations
+
+- [Reading list](https://github.com/LengerichLab/ReadingList)
+- [CompBio datasets for ML](https://github.com/LengerichLab/CompBioDatasetsForMachineLearning)
 
 ### Templates
 

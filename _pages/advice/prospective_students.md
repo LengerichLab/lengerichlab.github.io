@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /resources/advice/
+permalink: /resources/advice/prospective_students
 title: Advice for Prospective Students
 description:
 nav: false
