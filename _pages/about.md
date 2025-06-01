@@ -6,11 +6,13 @@ subtitle: <a href="//stat.wisc.edu">Department of Statistics</a> @ <a href="//wi
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: false # includes social icons at the bottom of the page
+social: true # includes social icons at the bottom of the page
 ---
 
-Welcome to the Lengerich lab at the University of Wisconsin-Madison.
-We develop ML methods and AI systems to advance precision medicine.
+<img src="/assets/img/Adaptive_Inference_Lab_Logo.png" alt="Madison, Wisconsin" width="100%"/>
+
+Welcome to the <strong>A</strong>daptive <strong>I</strong>nference Lab at the University of Wisconsin-Madison.
+We build statistical AI systems for context-aware healthcare.
 
 Quick links:
 
@@ -32,4 +34,4 @@ Quick links:
   <input type="submit" value="Subscribe" />
 </form>
 
-<img src="/assets/img/madison.jpeg" alt="Madison, Wisconsin" width="100%"/>
+
