@@ -2,19 +2,19 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Lengerich Lab
-first_name: Lengerich
+title: Adaptive Inference Lab @ UW-Madison
+first_name: 
 middle_name: #
-last_name: Lab
+last_name: 
 email: LastName@wisc.edu
 description: >
-  AI for healthcare. Context matters.
+  We build statistical AI systems for context-aware healthcare.
 footer_text: #
 keywords: #
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: uw-crest-color-web-digital.svg # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
-url: https://lengerichlab.github.io # the base hostname & protocol for your site
+url: https://adaptinfer.org # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
