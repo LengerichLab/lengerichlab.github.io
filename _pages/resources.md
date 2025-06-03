@@ -9,8 +9,8 @@ nav_order: 4
 
 ### Internal resources
 
-- [Lengerich Lab user guide](https://docs.google.com/document/d/1HMHeX9qSOq6PFn_cW47b3tzdJKK6QZGE39u25vsA9QA/edit?usp=sharing)
-- [Lengerich Lab guide for AWS and remote Jupyter](https://docs.google.com/document/d/1CdVA_doTJZohg9dB8UhPHCgRuOtmLTAvCRV56IqBKvE/edit?usp=sharing)
+- [Lab user guide](https://docs.google.com/document/d/1HMHeX9qSOq6PFn_cW47b3tzdJKK6QZGE39u25vsA9QA/edit?usp=sharing)
+- [Guide for AWS and remote Jupyter](https://docs.google.com/document/d/1CdVA_doTJZohg9dB8UhPHCgRuOtmLTAvCRV56IqBKvE/edit?usp=sharing)
 
 ---
 
@@ -34,17 +34,26 @@ nav_order: 4
 
 ### Software tools
 
-ML:
+[FastLM](https://fastlm.ai) - Fast, light-weight tools for large-scale, distributed, parallel, sparsity. Includes:
+- [FastCache](https://github.com/FastLM/FastCache): Fast Caching for Diffusion Transformer Through Learnable Linear Approximation
+- [PiKV](https://github.com/FastLM/PiKV): KV Cache Management System for MoE
+- [GraphSnapShot](https://github.com/FastLM/GraphSnapShot): Caching Local Structure for Fast Graph Learning
 
+Contextualized ML:
 - [ContextualizedML](https://contextualized.ml) - An SKLearn-style toolbox for estimating and analyzing models, distributions, and functions with context-specific parameters
+
+Explainable Boosting Machines (EBM):
+
 - [TalkToEBM](https://github.com/interpretml/TalkToEBM) - A Natural Language Interface to Explainable Boosting Machines (EBMs)
-- [EBM Utils](https://github.com/LengerichLab/ebm_utils) - Utilities for EBM
-- [GAM Purification](https://github.com/LengerichLab/gam_purification) - Tools for purifying additive models with interaction effects into identifiable representations.
+- [EBM Utils](https://github.com/AdaptInfer/ebm_utils) - Utilities for EBM
+- [GAM Purification](https://github.com/AdaptInfer/gam_purification) - Tools for purifying additive models with interaction effects into identifiable representations.
 
 EHR:
 
-- [clEHRity](https://github.com/LengerichLab/clEHRity) - Automatically finding surprises in EHRs
+- [clEHRity](https://github.com/AdaptInfer/clEHRity) - Automatically finding surprises in EHRs
 
-Misc:
+Academic Utils:
 
-- [ConferenceCountdown](https://github.com/LengerichLab/ConferenceCountdown) - A countdown website for ML/CompBio conference deadlines.
+- [ConferenceCountdown](https://github.com/AdaptInfer/ConferenceCountdown) - A countdown website for ML/CompBio conference deadlines.
+- [website_utils](https://github.com/adaptinfer/website_Utils) - Some utilities for building this website.
+  
