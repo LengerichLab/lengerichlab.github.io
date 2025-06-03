@@ -24,7 +24,7 @@ profiles:
 
   - align: left
     image: profiles/chen.jpg
-    context: peope/chen.md
+    context: people/chen.md
     image_circular: false
 ---
 
@@ -32,7 +32,7 @@ profiles:
 
 ## Undergraduate research assistants [active projects]:
 
-- Dong Liu, [FastLM]
+- Dong Liu, [[FastLM](https://fastlm.ai)]
 - Amy Cai, [[Context-adaptive systems](/projects/1_contextualized), [Maternal health](/projects/8_smm)]
 - Luke Weiss, [[Context-adaptive systems](/projects/1_contextualized), [Maternal health](/projects/8_smm)]
 - Peter Lee, [[Context-adaptive systems](/projects/1_contextualized)]
