@@ -24,6 +24,7 @@
   publisher={National Academy of Sciences},
 html={https://www.pnas.org/doi/abs/10.1073/pnas.2411930122},
   bibtex_show={true},
+  selected={true},
   abstract={Cancers are shaped by somatic mutations, microenvironment, and patient background, each altering gene expression and regulation in complex ways, resulting in heterogeneous cellular states and dynamics. Inferring gene regulatory networks (GRNs) from expression data can help characterize this regulation-driven heterogeneity, but network inference requires many statistical samples, limiting GRNs to cluster-level analyses that ignore intracluster heterogeneity. We propose to move beyond coarse analyses of predefined subgroups by using contextualized learning, a multitask learning paradigm that uses multiview contexts including phenotypic, molecular, and environmental information to infer personalized models. With sample-specific contexts, contextualization enables sample-specific models and even generalizes at test time to predict network models for entirely unseen contexts. We unify three network model classes (Correlation, Markov, and Neighborhood Selection) and estimate context-specific GRNs for 7,997 tumors across 25 tumor types, using copy number and driver mutation profiles, tumor microenvironment, and patient demographics as model context. Our generative modeling approach allows us to predict GRNs for unseen tumor types based on a pan-cancer model of how somatic mutations affect gene regulation. Finally, contextualized networks enable GRN-based precision oncology by providing a structured view of expression dynamics at sample-specific resolution, explaining known biomarkers in terms of network-mediated effects and leading to subtypings that improve survival prognosis. We provide a SKLearn-style Python package https://contextualized.ml for learning and analyzing contextualized models, as well as interactive plotting tools for pan-cancer data exploration at https://github.com/cnellington/CancerContextualized}
 }
 
@@ -88,7 +89,7 @@ html={https://www.pnas.org/doi/abs/10.1073/pnas.2411930122},
     author = {Ellington, Caleb N. and Lengerich, Benjamin J. and Lo, Wesley and Alvarez, Aaron and Rubbi, Andrea and Kellis, Manolis and Xing, Eric P.},
     title = {Contextualized: Heterogeneous Modeling Toolbox},
     journal = {Journal of Open Source Software},
-    selected = {true},
+    selected = {false},
     abstract = {Heterogeneous and context-dependent systems are common in real-world processes, such as
       those in biology, medicine, finance, and the social sciences. However, learning accurate and
       interpretable models of these heterogeneous systems remains an unsolved problem. Most
@@ -198,7 +199,7 @@ We examine Contextualized Machine Learning (ML), a paradigm for learning heterog
   pdf = {https://proceedings.neurips.cc/paper/2019/file/52d2752b150f9c35ccb6869cbf074e48-Paper.pdf},
   arxiv = {1910.06939},
   keywords = {Interpretable, Contextualized},
-  selected = {true},
+  selected = {false},
   bibtex_show = {true}
 }
 
@@ -248,7 +249,7 @@ We examine Contextualized Machine Learning (ML), a paradigm for learning heterog
   abstract = {In many applications, inter-sample heterogeneity is crucial to understanding the complex biological processes under study. For example, in genomic analysis of cancers, each patient in a cohort may have a different driver mutation, making it difficult or impossible to identify causal mutations from an averaged view of the entire cohort. Unfortunately, many traditional methods for genomic analysis seek to estimate a single model which is shared by all samples in a population, ignoring this inter-sample heterogeneity entirely. In order to better understand patient heterogeneity, it is necessary to develop practical, personalized statistical models.
   To uncover this inter-sample heterogeneity, we propose a novel regularizer for achieving patient-specific personalized estimation. This regularizer operates by learning two latent distance metrics—one between personalized parameters and one between clinical covariates—and attempting to match the induced distances as closely as possible. Crucially, we do not assume these distance metrics are already known. Instead, we allow the data to dictate the structure of these latent distance metrics. Finally, we apply our method to learn patient-specific, interpretable models for a pan-cancer gene expression dataset containing samples from more than 30 distinct cancer types and find strong evidence of personalization effects between cancer types as well as between individuals. Our analysis uncovers sample-specific aberrations that are overlooked by population-level methods, suggesting a promising new path for precision analysis of complex diseases such as cancer.},
   keywords = {Interpretable, Contextualized, Statistical Genetics, Genomics, Cancer},
-  selected = {true},
+  selected = {false},
   bibtex_show = {true}
 }
 
