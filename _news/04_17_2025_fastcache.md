@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper [FastCache](https://arxiv.org/abs/2505.20353) is published in *CVPR BASE*. Congrats to first-author Dong!
+Our paper [FastCache](https://arxiv.org/abs/2505.20353) is published in _CVPR BASE_. Congrats to first-author Dong!

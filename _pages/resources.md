@@ -35,11 +35,13 @@ nav_order: 4
 ### Software tools
 
 [FastLM](https://fastlm.ai) - Fast, light-weight tools for large-scale, distributed, parallel, sparsity. Includes:
+
 - [FastCache](https://github.com/FastLM/FastCache): Fast Caching for Diffusion Transformer Through Learnable Linear Approximation
 - [PiKV](https://github.com/FastLM/PiKV): KV Cache Management System for MoE
 - [GraphSnapShot](https://github.com/FastLM/GraphSnapShot): Caching Local Structure for Fast Graph Learning
 
 Contextualized ML:
+
 - [ContextualizedML](https://contextualized.ml) - An SKLearn-style toolbox for estimating and analyzing models, distributions, and functions with context-specific parameters
 
 Explainable Boosting Machines (EBM):
@@ -56,4 +58,3 @@ Academic Utils:
 
 - [ConferenceCountdown](https://github.com/AdaptInfer/ConferenceCountdown) - A countdown website for ML/CompBio conference deadlines.
 - [website_utils](https://github.com/adaptinfer/website_Utils) - Some utilities for building this website.
-  
