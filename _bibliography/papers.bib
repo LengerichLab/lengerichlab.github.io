@@ -1,6 +1,42 @@
 ---
 ---
 
+
+@article{liu2025fastcache,
+  title={FastCache: Fast Caching for Diffusion Transformer Through Learnable Linear Approximation},
+  author={Liu, Dong and Zhang, Jiayi and Li, Yifan and Yu, Yanxuan and Lengerich, Ben and Wu, Ying Nian},
+  journal={CVPR Another Brick in the AI Wall: Building Practical Solutions from Theoretical Foundations (CVPR BASE 2025)},
+  bibtex_show={true},
+  year={2025},
+  html={https://arxiv.org/abs/2505.20353},
+  bibtex_show={true},
+  abstract={Diffusion Transformers (DiT) are powerful generative models but remain computationally intensive due to their iterative structure and deep transformer stacks. To alleviate this inefficiency, we propose FastCache, a hidden-state-level caching and compression framework that accelerates DiT inference by exploiting redundancy within the model's internal representations. FastCache introduces a dual strategy: (1) a spatial-aware token selection mechanism that adaptively filters redundant tokens based on hidden state saliency, and (2) a transformer-level cache that reuses latent activations across timesteps when changes are statistically insignificant. These modules work jointly to reduce unnecessary computation while preserving generation fidelity through learnable linear approximation. Theoretical analysis shows that FastCache maintains bounded approximation error under a hypothesis-testing-based decision rule. Empirical evaluations across multiple DiT variants demonstrate substantial reductions in latency and memory usage, with best generation output quality compared to other cache methods, as measured by FID and t-FID. Code implementation of FastCache is available on GitHub at this https URL.}
+}
+
+@article{ellington2025learning,
+  title={Learning to estimate sample-specific transcriptional networks for 7,000 tumors},
+  author={Ellington, Caleb N and Lengerich, Benjamin J and Watkins, Thomas BK and Yang, Jiekun and Adduri, Abhinav K and Mahbub, Sazan and Xiao, Hanxi and Kellis, Manolis and Xing, Eric P},
+  journal={Proceedings of the National Academy of Sciences (PNAS)},
+  volume={122},
+  number={21},
+  pages={e2411930122},
+  year={2025},
+  publisher={National Academy of Sciences},
+html={https://www.pnas.org/doi/abs/10.1073/pnas.2411930122},
+  bibtex_show={true},
+  abstract={Cancers are shaped by somatic mutations, microenvironment, and patient background, each altering gene expression and regulation in complex ways, resulting in heterogeneous cellular states and dynamics. Inferring gene regulatory networks (GRNs) from expression data can help characterize this regulation-driven heterogeneity, but network inference requires many statistical samples, limiting GRNs to cluster-level analyses that ignore intracluster heterogeneity. We propose to move beyond coarse analyses of predefined subgroups by using contextualized learning, a multitask learning paradigm that uses multiview contexts including phenotypic, molecular, and environmental information to infer personalized models. With sample-specific contexts, contextualization enables sample-specific models and even generalizes at test time to predict network models for entirely unseen contexts. We unify three network model classes (Correlation, Markov, and Neighborhood Selection) and estimate context-specific GRNs for 7,997 tumors across 25 tumor types, using copy number and driver mutation profiles, tumor microenvironment, and patient demographics as model context. Our generative modeling approach allows us to predict GRNs for unseen tumor types based on a pan-cancer model of how somatic mutations affect gene regulation. Finally, contextualized networks enable GRN-based precision oncology by providing a structured view of expression dynamics at sample-specific resolution, explaining known biomarkers in terms of network-mediated effects and leading to subtypings that improve survival prognosis. We provide a SKLearn-style Python package https://contextualized.ml for learning and analyzing contextualized models, as well as interactive plotting tools for pan-cancer data exploration at https://github.com/cnellington/CancerContextualized}
+}
+
+@article{mahbub2024one,
+    author = {Mahbub, Sazan and Ellington, Caleb and Alinejad, Sina and Wen, Kevin and Lengerich, Ben and Xing, Eric P.},
+    title = {From One to Zero: RAG-IM Adapts Language Models for Interpretable Zero-Shot Clinical Predictions},
+    journal = {NeurIPS Workshop on Adaptive Foundation Models (NeurIPS AFM)},
+    year = {2024},
+  bibtex_show={True},
+  html={https://openreview.net/forum?id=3OYjWzqqC1},
+  abstract={Clinical machine learning models must adapt to new settings such as different hospitals, clinicians, or patient populations. These differing environments present related but subtly distinct tasks, where diseases and medical interventions share common foundations but vary in meaningful ways. In contrast to one-size-fits-all invariant feature learning, we believe representing meaningful differences between domains and adapting to these differences will improve accuracy, utility, and interpretability of machine learning in health. Here, we introduce Retrieval-Augmented Generation of Interpretable Models (RAG-IM), a highly performant method for adapting statistical models to new domains based on their descriptions. By leveraging the strengths of Retrieval-Augmented Generation (RAG), our framework retrieves relevant models from related tasks and combines them with contextual insights from pre-trained language models. RAG-IM generates task-specific, interpretable models that perform reliably, even in few-shot and zero-shot scenarios where data are limited or completely unavailable. Through experiments on 7487 related tasks, we find that RAG-IM is a promising general-purpose platform to enable model-based analysis to data-limited and heterogeneous regimes by connecting statistical analysis with natural language.}
+}
+
 @article{lengerich2024interpretable,
   title={Interpretable Machine Learning Predicts Postpartum Hemorrhage with Severe Maternal Morbidity in a Lower Risk Laboring Obstetric Population},
   author={Lengerich, Benjamin J and Caruana, Rich and Painter, Ian and Weeks, William B and Sitcov, Kristin and Souter, Vivienne},
