@@ -34,7 +34,6 @@ nav_order: 4
 
 ### Software tools
 
-# Image link
 <a href="http://fastlm.ai">
   <img src="/assets/images/fastlm_logo.png" alt="FastLM" width="10%"/>
 </a>
