@@ -12,7 +12,7 @@ nav_order: 4
 
 - Context-Adaptive ML:
   - <a href="https://contextualized.ml">
-    <img src="/assets/img/contextualized_logo.png" alt="ContextualizedML" width="20%"/>
+    <img src="/assets/img/contextualized_logo.png" alt="ContextualizedML" width="30%"/>
   </a>: An SKLearn-style toolbox for estimating and analyzing models, distributions, and functions with context-specific parameters
 
 
@@ -31,7 +31,6 @@ nav_order: 4
   - [GAM Purification](https://github.com/AdaptInfer/gam_purification) - Tools for purifying additive models with interaction effects into identifiable representations.
 
 - Academic Utils:
-
   - [ConferenceCountdown](https://github.com/AdaptInfer/ConferenceCountdown) - A countdown website for ML/CompBio conference deadlines.
   - [website_utils](https://github.com/adaptinfer/website_Utils) - Some utilities for building this website.
 
