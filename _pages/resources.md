@@ -18,7 +18,7 @@ nav_order: 4
 
 - [Thoughts from my Faculty Application Experience](https://benlengerich.medium.com/38f1a29c715e)
 - [A few lessons learned from a few years in ML research](https://benlengerich.medium.com/a-few-lessons-learned-from-a-few-years-in-ml-research-8f6f88f97e61)
-- [Advice to Prospective Students](./advice/prospective_students)
+- [Advice to Prospective Students](https://adaptinfer.org/advice/prospective_students)
 - [Advice on Letters of Recommendation](./advice/letters_of_rec)
 
 ### Compilations
@@ -35,9 +35,9 @@ nav_order: 4
 ### Software tools
 
 <a href="http://fastlm.ai">
-  <img src="/assets/images/fastlm_logo.png" alt="FastLM" width="10%"/>
+  <img src="/assets/img/fastlm_logo.png" alt="FastLM" width="10%"/>
 </a>
-- Fast, light-weight tools for large-scale, distributed, parallel, sparsity. Includes:
+: Fast, light-weight tools for large-scale, distributed, parallel, sparsity. Includes:
 
 - [FastCache](https://github.com/FastLM/FastCache): Fast Caching for Diffusion Transformer Through Learnable Linear Approximation
 - [PiKV](https://github.com/FastLM/PiKV): KV Cache Management System for MoE
