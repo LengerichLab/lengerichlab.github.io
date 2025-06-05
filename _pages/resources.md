@@ -34,7 +34,11 @@ nav_order: 4
 
 ### Software tools
 
-[FastLM](https://fastlm.ai) - Fast, light-weight tools for large-scale, distributed, parallel, sparsity. Includes:
+# Image link
+<a href="http://fastlm.ai">
+  <img src="/assets/images/fastlm_logo.png" alt="FastLM" width="10%"/>
+</a>
+- Fast, light-weight tools for large-scale, distributed, parallel, sparsity. Includes:
 
 - [FastCache](https://github.com/FastLM/FastCache): Fast Caching for Diffusion Transformer Through Learnable Linear Approximation
 - [PiKV](https://github.com/FastLM/PiKV): KV Cache Management System for MoE
