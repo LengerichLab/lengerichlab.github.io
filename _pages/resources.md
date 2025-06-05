@@ -7,12 +7,36 @@ nav: true
 nav_order: 4
 ---
 
-### Internal resources
 
-- [Lab user guide](https://docs.google.com/document/d/1HMHeX9qSOq6PFn_cW47b3tzdJKK6QZGE39u25vsA9QA/edit?usp=sharing)
-- [Guide for AWS and remote Jupyter](https://docs.google.com/document/d/1CdVA_doTJZohg9dB8UhPHCgRuOtmLTAvCRV56IqBKvE/edit?usp=sharing)
+### Software tools
 
----
+- Context-Adaptive ML:
+  - <a href="https://contextualized.ml">
+    <img src="/assets/img/contextualized_logo.png" alt="ContextualizedML" width="10%"/>
+  </a>
+  - An SKLearn-style toolbox for estimating and analyzing models, distributions, and functions with context-specific parameters
+
+
+- <a href="http://fastlm.ai">
+    <img src="/assets/img/fastlm_logo.png" alt="FastLM" width="10%"/>
+  </a>
+  
+  Tools for large-scale, distributed, parallel, sparsity in LMs. Includes:
+  
+  - [FastCache](https://github.com/FastLM/FastCache): Fast Caching for Diffusion Transformer Through Learnable Linear Approximation
+  - [PiKV](https://github.com/FastLM/PiKV): KV Cache Management System for MoE
+  - [GraphSnapShot](https://github.com/FastLM/GraphSnapShot): Caching Local Structure for Fast Graph Learning
+
+- Explainable Boosting Machines (EBM):
+  - [TalkToEBM](https://github.com/interpretml/TalkToEBM) - A Natural Language Interface to Explainable Boosting Machines (EBMs)
+  - [EBM Utils](https://github.com/AdaptInfer/ebm_utils) - Utilities for EBM
+  - [GAM Purification](https://github.com/AdaptInfer/gam_purification) - Tools for purifying additive models with interaction effects into identifiable representations.
+
+- Academic Utils:
+
+  - [ConferenceCountdown](https://github.com/AdaptInfer/ConferenceCountdown) - A countdown website for ML/CompBio conference deadlines.
+  - [website_utils](https://github.com/adaptinfer/website_Utils) - Some utilities for building this website.
+
 
 ### Advice
 
@@ -32,33 +56,10 @@ nav_order: 4
 - [Latex template for preprints](https://www.overleaf.com/read/cbkczmhxbkgj#2a2fc3)
 - [Latex template for academic CV](https://www.overleaf.com/read/wgjmndzcfyqr#21999c)
 
-### Software tools
 
-<a href="http://fastlm.ai">
-  <img src="/assets/img/fastlm_logo.png" alt="FastLM" width="10%"/>
-</a>
+---
 
-Fast, light-weight tools for large-scale, distributed, parallel, sparsity. Includes:
+### Internal resources
 
-- [FastCache](https://github.com/FastLM/FastCache): Fast Caching for Diffusion Transformer Through Learnable Linear Approximation
-- [PiKV](https://github.com/FastLM/PiKV): KV Cache Management System for MoE
-- [GraphSnapShot](https://github.com/FastLM/GraphSnapShot): Caching Local Structure for Fast Graph Learning
-
-Contextualized ML:
-
-- [ContextualizedML](https://contextualized.ml) - An SKLearn-style toolbox for estimating and analyzing models, distributions, and functions with context-specific parameters
-
-Explainable Boosting Machines (EBM):
-
-- [TalkToEBM](https://github.com/interpretml/TalkToEBM) - A Natural Language Interface to Explainable Boosting Machines (EBMs)
-- [EBM Utils](https://github.com/AdaptInfer/ebm_utils) - Utilities for EBM
-- [GAM Purification](https://github.com/AdaptInfer/gam_purification) - Tools for purifying additive models with interaction effects into identifiable representations.
-
-EHR:
-
-- [clEHRity](https://github.com/AdaptInfer/clEHRity) - Automatically finding surprises in EHRs
-
-Academic Utils:
-
-- [ConferenceCountdown](https://github.com/AdaptInfer/ConferenceCountdown) - A countdown website for ML/CompBio conference deadlines.
-- [website_utils](https://github.com/adaptinfer/website_Utils) - Some utilities for building this website.
+- [Lab user guide](https://docs.google.com/document/d/1HMHeX9qSOq6PFn_cW47b3tzdJKK6QZGE39u25vsA9QA/edit?usp=sharing)
+- [Guide for AWS and remote Jupyter](https://docs.google.com/document/d/1CdVA_doTJZohg9dB8UhPHCgRuOtmLTAvCRV56IqBKvE/edit?usp=sharing)
