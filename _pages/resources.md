@@ -12,15 +12,13 @@ nav_order: 4
 
 - Context-Adaptive ML:
   - <a href="https://contextualized.ml">
-    <img src="/assets/img/contextualized_logo.png" alt="ContextualizedML" width="10%"/>
-  </a>
-  - An SKLearn-style toolbox for estimating and analyzing models, distributions, and functions with context-specific parameters
+    <img src="/assets/img/contextualized_logo.png" alt="ContextualizedML" width="20%"/>
+  </a>: An SKLearn-style toolbox for estimating and analyzing models, distributions, and functions with context-specific parameters
 
 
 - <a href="http://fastlm.ai">
     <img src="/assets/img/fastlm_logo.png" alt="FastLM" width="10%"/>
   </a>
-  
   Tools for large-scale, distributed, parallel, sparsity in LMs. Includes:
   
   - [FastCache](https://github.com/FastLM/FastCache): Fast Caching for Diffusion Transformer Through Learnable Linear Approximation
