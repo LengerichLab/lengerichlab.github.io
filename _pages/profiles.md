@@ -24,7 +24,7 @@ profiles:
 
   - align: left
     image: profiles/tbd.jpg
-    context: people/chen.md
+    content: people/chen.md
     image_circular: false
 ---
 
