@@ -8,7 +8,6 @@ category: methods
 related_publications: true
 ---
 
-
 <div class="row">
   <div class="col-md-6 mx-auto">
         {% include figure.liquid loading="eager" path="assets/img/heterogeneity.jpeg" title="heterogeneity" class="img-fluid rounded z-depth-1" %}

@@ -8,7 +8,6 @@ category: applications
 related_publications: true
 ---
 
-
 <div class="row">
   <div class="col-md-6 mx-auto">
 {% include figure.liquid loading="eager" path="assets/img/rwe.jpeg" title="Real-world evidence" class="img-fluid rounded z-depth-1" %}
