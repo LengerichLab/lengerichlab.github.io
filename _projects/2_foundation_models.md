@@ -14,7 +14,7 @@ Prior knowledge is a powerful form of context in statistical inference. Traditio
 
 We are building a bi-directional bridge between the two paradigms:
 
-- *Inference from Foundation Models*: Using foundation models to inform and regularize statistical estimators {% cite mahbub2024from %}.
-- *Understanding with Foundation Models*: Using foundation models to interpret, summarize, or explain structured models automatically {% cite bordt2024data %}.
+- *Inference from Foundation Models*: Using foundation models to inform and regularize statistical estimators {% cite mahbub2024one %}.
+- *Understanding with Foundation Models*: Using foundation models to interpret, summarize, or explain structured models automatically {% cite bordt2024data %} {% cite lengerich2023llms %}.
   
 <br/><br/>
