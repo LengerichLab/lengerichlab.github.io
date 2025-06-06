@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>STAT 479 PGMs | Lecture 19: The Attention Mechanism</title>
+  <meta name="description" content="10-708 - Probabilistic Graphical Models - University of Wisconsin-Madison - Spring 2025
+">
+
+  <link rel="shortcut icon" href="/pgm-spring-2025/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/pgm-spring-2025/assets/css/main.css">
+  <link rel="canonical" href="/pgm-spring-2025/notes/lecture-19/">
+
+  
+  <!-- Load Latex JS -->
+  <script src="https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/latex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/latex.component.js"></script>
+  
+</head>
+
+    <script src="/pgm-spring-2025/assets/js/distillpub/template.v2.js"></script>
+    <script src="/pgm-spring-2025/assets/js/distillpub/transforms.v2.js"></script>
+  </head>
+
+  <d-front-matter>
+    <script type="text/json">{
+      "title": "Lecture 19: The Attention Mechanism",
+      "description": "An in-depth exploration of attention mechanisms in neural networks, from their motivation and foundational forms (hard and soft attention) to their applications in image captioning and the Transformer architecture.",
+      "published": "April 10, 2025",
+      "lecturers": [
+        
+        {
+          "lecturer": "Benjamin Lengerich",
+          "lecturerURL": "https://lengerichlab.github.io/"
+        }
+        
+      ],
+      "authors": [
+        
+        {
+          "author": "Lacey Dinh"
+        }
+        
+      ],
+      "editors": [
+        
+        {
+          "editor": "Editor Name"
+        }
+        
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
+  </d-front-matter>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <span class="site-title">
+      <a class="page-link" href="https://adaptinfer.org/pgm-spring-2025/">STAT 479 PGMs</a>
+    </span>
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <a class="page-link" href="/pgm-spring-2025/logistics/">logistics</a>
+        <a class="page-link" href="/pgm-spring-2025/lectures/">lectures</a>
+        <a class="page-link" href="/pgm-spring-2025/notes/">notes</a>
+        <a class="page-link" href="/pgm-spring-2025/calendar/">calendar</a>
+        <a class="page-link" href="/pgm-spring-2025/homework/">homework</a>
+        <a class="page-link" href="/pgm-spring-2025/project/">project</a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+
+      <d-title>
+        <h1>Lecture 19: The Attention Mechanism</h1>
+        <p>An in-depth exploration of attention mechanisms in neural networks, from their motivation and foundational forms (hard and soft attention) to their applications in image captioning and the Transformer architecture.</p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <h2 id="the-attention-mechansism">The Attention Mechansism</h2>
+<h3 id="motivation-why-attention">Motivation: Why Attention?</h3>
+
+<p>In sequence modeling tasks like machine translation, traditional models such as RNNs or LSTMs encode an input sequence into a <strong>single fixed-length vector</strong>. This vector is then used by a decoder to generate the target sequence. However, this strategy compresses all the information into a bottleneck, making it difficult for the model to retain <strong>long-range dependencies</strong> or <strong>fine-grained contextual relationships</strong>.</p>
+
+<p>Let’s consider the task of translating the English sentence “Where is the library?” into Spanish. The translation depends heavily on the word <em>“the”</em>, which maps to <em>“la”</em> in <em>“la biblioteca”</em>. However, if the input becomes more complex—e.g., “Where is the <strong>huge public</strong> library?”—the correct translation of <em>“the”</em> still needs to align with <em>“la”</em>, even though several words now intervene.</p>
+
+<p>This raises a question: <strong>Do we really need to encode the whole sentence into one fixed vector just to translate a single word?</strong> Or can we instead selectively focus on relevant parts of the input as needed?</p>
+
+<figure>
+  <div class="row">
+    <div class="col l-body">
+      <img src="/assets/img/notes/lecture-19/why-attention.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 1:</strong> Machine translation examples showing how "the" aligns with "la" in both simple and complex sentence structures. Attention allows models to flexibly track such alignments across varying contexts.
+  </figcaption>
+</figure>
+
+<p>The <strong>attention mechanism</strong> was introduced as a way to <strong>soften</strong> this bottleneck. Rather than relying on a single fixed-length encoding, the model learns to focus on the most relevant parts of the input sequence for each step in the output.</p>
+
+<hr />
+
+<h3 id="hard-attention">Hard Attention</h3>
+
+<p>Hard attention is a mechanism where the model makes a <strong>discrete decision</strong> about where to attend at each time step. This means it chooses a single position (or subset) in the input sequence to focus on, essentially making a zero-one selection. The benefit of this approach is that it can provide <strong>interpretable decisions</strong>, which makes it attractive in explainable ML.</p>
+
+<p>However, hard attention comes with a major drawback: it is <strong>non-differentiable</strong>. Because the selection is discrete, we cannot use standard backpropagation to train the model. Instead, training must rely on techniques like <strong>reinforcement learning</strong>, which are often slower and more unstable.</p>
+
+<figure>
+  <div class="row">
+    <div class="col l-body">
+      <img src="/assets/img/notes/lecture-19/hard-attention.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 2:</strong> An example of hard attention in action from Lei et al. (2016), where specific phrases in a review are selected as contributing to a 5-star rating for "look". The highlighted regions are interpretable, but training such models is difficult.
+  </figcaption>
+</figure>
+
+<hr />
+
+<h3 id="soft-attention">Soft Attention</h3>
+
+<p>To overcome the training difficulties of hard attention, Bahdanau et al. (2015) proposed <strong>soft attention</strong>, a differentiable alternative. Instead of selecting a single word, soft attention assigns a <strong>probability distribution over all input words</strong>, effectively computing a weighted average of their representations.</p>
+
+<p>At each decoder step, the model produces an <strong>attention weight</strong> $\alpha_{ij}$ for every encoder hidden state $h_j$, reflecting its relevance to the current decoding step $i$. These weights are then used to compute a <strong>context vector</strong> $c_i$, which is a weighted combination of the encoder states.</p>
+
+<figure>
+  <div class="row">
+    <div class="col one">
+      <img src="/assets/img/notes/lecture-19/soft-attention-1.png" />
+    </div>
+    <div class="col one">
+      <img src="/assets/img/notes/lecture-19/soft-attention-2.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 3:</strong> (Left) The attention distribution over input words for translating "I love coffee" to "Me gusta el café". (Right) Attention in a many-to-many encoder-decoder setup, where each output word attends differently to the input.
+  </figcaption>
+</figure>
+
+<p>The soft attention mechanism can be formalized as follows:</p>
+
+<d-math block="">
+\begin{aligned}
+c_i &amp;= \sum_{j=1}^{T_x} \alpha_{ij} h_j \\
+\alpha_{ij} &amp;= \frac{\exp(e_{ij})}{\sum_{k=1}^{T_x} \exp(e_{ik})} \\
+e_{ij} &amp;= a(s_{i-1}, h_j)
+\end{aligned}
+</d-math>
+
+<ul>
+  <li>$h_j$ are the encoder hidden states,</li>
+  <li>$s_{i-1}$ is the decoder’s previous state,</li>
+  <li>$e_{ij}$ is an <strong>alignment score</strong> indicating how well $h_j$ aligns with the output at step $i$,</li>
+  <li>$\alpha_{ij}$ is the <strong>normalized attention weight</strong>.</li>
+</ul>
+
+<figure>
+  <div class="row">
+    <div class="col l-body">
+      <img src="/assets/img/notes/lecture-19/soft-attention-equation.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 4:</strong> Key equations for computing soft attention: the alignment score, mixture weights (attention distribution), and final context vector.
+  </figcaption>
+</figure>
+
+<hr />
+
+<h3 id="variants-of-attention">Variants of Attention</h3>
+
+<h4 id="monotonic-attention">Monotonic Attention</h4>
+
+<p>Sometimes, we know in advance that the alignment between input and output will be <strong>monotonic</strong>—that is, the output follows the input order (e.g., in speech recognition). In such cases, we can restrict the attention to move forward without revisiting earlier tokens.</p>
+
+<figure>
+  <div class="row">
+    <div class="col l-body">
+      <img src="/assets/img/notes/lecture-19/monotonic-attention.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 5:</strong> Monotonic attention enforces a diagonal alignment pattern where each output word attends to a new input word in order. This can simplify computation and improve interpretability.
+  </figcaption>
+</figure>
+
+<hr />
+
+<h4 id="global-vs-local-attention">Global vs. Local Attention</h4>
+
+<p>Another important distinction in attention types lies in the <strong>scope</strong> of attention:</p>
+
+<ul>
+  <li><strong>Global attention</strong> attends over all source positions. This is powerful but computationally expensive.</li>
+  <li><strong>Local attention</strong> focuses on a small window of positions near a predicted central point, reducing cost and often improving performance on long sequences.</li>
+</ul>
+
+<figure>
+  <div class="row">
+    <div class="col one">
+      <img src="/assets/img/notes/lecture-19/global-attention.png" />
+    </div>
+    <div class="col one">
+      <img src="/assets/img/notes/lecture-19/local-attention.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 6:</strong> (Left) In global attention, every encoder hidden state contributes to the context vector. (Right) Local attention narrows down focus to a few positions around a predicted alignment point.
+  </figcaption>
+</figure>
+
+<hr />
+
+<h3 id="attention-in-image-captioning">Attention in Image Captioning</h3>
+
+<p>To better understand attention mechanisms, let’s look at the task of <strong>image captioning</strong>, where a model generates a textual description for a given image.</p>
+
+<h4 id="baseline-cnn--rnn">Baseline: CNN + RNN</h4>
+
+<p>A common pipeline uses a <strong>Convolutional Neural Network (CNN)</strong> to extract image features and an <strong>RNN</strong> (or LSTM) to decode those features into a sequence of words.</p>
+
+<figure>
+  <div class="row">
+    <div class="col l-body">
+      <img src="/assets/img/notes/lecture-19/image-captioning-rnn.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 7:</strong> A standard CNN-RNN pipeline for image captioning. The CNN encodes the image into a fixed-length feature vector, which the RNN uses to generate a caption word-by-word.
+  </figcaption>
+</figure>
+
+<p>The CNN processes the input image (e.g., of size $H \times W \times 3$) into a feature vector of dimension $D$. This feature vector initializes the hidden state of the RNN, which then sequentially predicts words.</p>
+
+<p>However, this approach suffers from a critical limitation: <strong>the RNN only sees the entire image once</strong> at the beginning. During decoding, it lacks the ability to focus on different regions of the image that might be relevant to different words in the caption.</p>
+
+<hr />
+
+<h4 id="soft-attention-for-image-captioning">Soft Attention for Image Captioning</h4>
+
+<p>To address this, <strong>soft attention</strong> can be applied to image captioning. Instead of encoding the entire image into one global feature, the CNN outputs a <strong>grid of spatial features</strong>—each corresponding to a different region of the image.</p>
+
+<p>At each timestep, the decoder attends to this grid and computes a <strong>weighted combination</strong> of features (the context vector), allowing the model to dynamically focus on different regions when predicting different words.</p>
+
+<figure>
+  <div class="row">
+    <div class="col l-body">
+      <img src="/assets/img/notes/lecture-19/image-captioning-soft-attention.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 8:</strong> With soft attention, the model generates a distribution over spatial locations in the CNN feature map and computes a weighted average (context vector) for each decoder step.
+  </figcaption>
+</figure>
+
+<p>Let $L$ be the number of spatial locations in the CNN feature grid and $D$ the dimensionality of each feature. The attention weights $\alpha_{i} \in \mathbb{R}^L$ are learned for each decoder step, and the context vector is:</p>
+
+\[z = \sum_{i=1}^L \alpha_i \cdot \text{feature}_i\]
+
+<p>This allows the decoder to generate more precise and descriptive captions.</p>
+
+<hr />
+
+<h3 id="cnns-and-hard-vs-soft-attention">CNNs and Hard vs. Soft Attention</h3>
+
+<p>Historically, CNNs were considered to operate in a <strong>hard attention</strong>-like manner during image captioning because they compress the visual scene into a <strong>single global vector</strong>, limiting spatial flexibility.</p>
+
+<p>In contrast, with soft attention, we maintain a <strong>spatial grid</strong> of features and summarize it via a <strong>learned distribution</strong>.</p>
+
+<figure>
+  <div class="row">
+    <div class="col l-body">
+      <img src="/assets/img/notes/lecture-19/hard-vs-soft-attention.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 9:</strong> (Top) Hard attention samples one feature from the grid based on a learned distribution. This is non-differentiable and requires reinforcement learning. (Bottom) Soft attention computes a weighted sum over all features and can be trained via backpropagation.
+  </figcaption>
+</figure>
+
+<p><strong>Key difference</strong>:</p>
+<ul>
+  <li>Hard attention chooses one region (e.g., $a$ or $b$) based on probabilities $p_a, p_b$, etc.</li>
+  <li>Soft attention computes:
+\(z = p_a a + p_b b + p_c c + p_d d\)</li>
+</ul>
+
+<p>This weighted average makes gradients flow through all paths, making soft attention amenable to standard gradient descent.</p>
+
+<hr />
+
+<h3 id="multi-headed-attention">Multi-Headed Attention</h3>
+
+<p>In practice, using <strong>multiple attention heads</strong>—each learning to focus on different aspects of the input—has proven highly effective. This idea is a core component of the <strong>Transformer architecture</strong>.</p>
+
+<p>Each head computes its own attention distribution and context vector. These are then concatenated and transformed to produce the final representation.</p>
+
+<figure>
+  <div class="row">
+    <div class="col l-body">
+      <img src="/assets/img/notes/lecture-19/multi-head-attention.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 10:</strong> Multiple attention heads can learn to focus on different syntactic or semantic aspects of a sentence. For example, one head may focus on coreference while another tracks syntax or positional structure.
+  </figcaption>
+</figure>
+
+<p>Applications include:</p>
+<ul>
+  <li><strong>Program synthesis</strong> (Allamanis et al., 2016): One head for copying variable names, another for generating common tokens.</li>
+  <li><strong>Machine translation</strong> (Vaswani et al., 2017): Independently learned heads capture different linguistic patterns.</li>
+</ul>
+
+<p>This diversity is key to the success of the Transformer.</p>
+
+<hr />
+
+<h2 id="self-attention">Self-Attention</h2>
+
+<p>After exploring traditional attention mechanisms in encoder-decoder architectures, we now shift focus to <strong>self-attention</strong>, a core component of modern models like the Transformer.</p>
+
+<p>Self-attention, also referred to as <strong>intra-attention</strong>, is a mechanism that allows each position in a sequence to attend to all other positions in the same sequence. This enables the model to capture long-range dependencies and contextual relationships efficiently—without relying on recurrence.</p>
+
+<hr />
+
+<h3 id="what-is-self-attention">What is Self-Attention?</h3>
+
+<p>In self-attention, every token in the input sequence is transformed by interacting with <strong>all other tokens</strong> via attention weights. The goal is to build a representation of a token that incorporates contextual information from the entire sequence.</p>
+
+<figure>
+  <div class="row">
+    <div class="col l-body">
+      <img src="/assets/img/notes/lecture-19/self-attention-architecture.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Figure 11:</strong> A schematic illustration of self-attention (adapted from Vaswani et al., 2017). Each embedded input vector (e.g., for "represent") is compared with all others ("Let’s", "this", "sentence") via a compatibility function (cmp), and their contributions are weighted and summed before passing through a feedforward network.
+  </figcaption>
+</figure>
+
+<p>Let the embedded inputs be $r_1, r_2, r_3, r_4$ for the sentence “Let’s represent this sentence.” For each word $r_i$, we:</p>
+
+<ol>
+  <li>Compare it with all others using a learned <strong>compatibility</strong> (or alignment) function.</li>
+  <li>Use the resulting scores to compute <strong>attention weights</strong>.</li>
+  <li>Generate a new representation $r_i’$, which is a weighted combination of all representations.</li>
+  <li>Pass this new vector through a <strong>feedforward neural network (FFNN)</strong> to obtain the output $r_i’’$.</li>
+</ol>
+
+<hr />
+
+<h3 id="why-use-self-attention">Why Use Self-Attention?</h3>
+
+<p>Self-attention offers several key advantages over recurrence or convolution-based methods:</p>
+
+<ul>
+  <li><strong>Constant path length</strong> between any two tokens. In RNNs, to connect distant tokens, information must pass through many sequential steps. Self-attention enables <strong>direct access</strong> between all pairs, improving long-range dependency modeling.</li>
+  <li><strong>Gating/multiplicative interactions</strong>, similar to mechanisms in LSTMs or GRUs, help regulate flow of information and improve expressivity.</li>
+  <li><strong>Parallelizability</strong>: Since there’s no recurrence, all tokens can be processed simultaneously (in parallel), allowing massive speedups during training.</li>
+  <li><strong>Potential to replace sequence modeling</strong> entirely—this was the foundational motivation behind the Transformer architecture.</li>
+</ul>
+
+<hr />
+
+<h3 id="is-self-attention-efficient">Is Self-Attention Efficient?</h3>
+
+<p>Despite the power of self-attention, a natural concern is computational cost. Self-attention has a complexity of:</p>
+
+\[\mathcal{O}(\text{length}^2 \cdot \text{dim})\]
+
+<p>because it computes pairwise interactions for all token pairs in the sequence. Let’s compare this to alternatives:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Layer Type</th>
+      <th>FLOPs (Floating Point Ops)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Self-Attention</td>
+      <td>( \mathcal{O}(\text{length}^2 \cdot \text{dim}) )</td>
+    </tr>
+    <tr>
+      <td>RNN (LSTM)</td>
+      <td>( \mathcal{O}(\text{length} \cdot \text{dim}^2) )</td>
+    </tr>
+    <tr>
+      <td>Convolution</td>
+      <td>( \mathcal{O}(\text{length} \cdot \text{dim}^2 \cdot \text{kernel_width}) )</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In practice, <strong>self-attention is very efficient on GPUs/TPUs</strong> due to its parallelizability and matrix-friendly computation style.</p>
+
+<hr />
+
+<h2 id="the-transformer">The Transformer</h2>
+
+<h3 id="word-embeddings">Word Embeddings</h3>
+
+<p>The Transformer starts with <strong>word embeddings</strong>—continuous-valued vector representations of tokens. These embeddings can be initialized in various ways:</p>
+
+<ul>
+  <li><strong>Random embeddings</strong>: A simple approach without prior knowledge.</li>
+  <li><strong>TF-IDF embeddings</strong>: Weighted based on frequency-inverse document frequency.</li>
+  <li><strong>Pretrained embeddings</strong>: From models like Word2Vec or GloVe that capture semantic relationships across corpora.</li>
+</ul>
+
+<figure id="word-embeddings" class="l-body-outset">
+  <div class="row">
+    <div class="col two">
+      <img src="/assets/img/notes/lecture-19/word-embedding-tfidf.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>TF-IDF Embedding.</strong>
+    Shows a transformation from sparse word-document matrices into continuous embedding space.
+  </figcaption>
+</figure>
+
+<p>These embeddings form the <strong>input representation</strong>, capturing static word meaning. However, static vectors lack <strong>contextual information</strong>.</p>
+
+<hr />
+
+<h3 id="contextual-embeddings">Contextual Embeddings</h3>
+
+<p>Words can take on different meanings depending on context. In the sentence:</p>
+
+<blockquote>
+  <p><em>“The King doth wake tonight and takes his rouse…“</em></p>
+</blockquote>
+
+<p>the word <strong>“King”</strong> must be interpreted in its Shakespearean context. Transformers update embeddings by applying self-attention, allowing representations to be refined by surrounding words.</p>
+
+<figure id="contextual-embeddings" class="l-body-outset">
+  <div class="row">
+    <div class="col one">
+      <img src="/assets/img/notes/lecture-19/static-embedding-king.png" />
+    </div>
+    <div class="col one">
+      <img src="/assets/img/notes/lecture-19/contextual-embedding-king.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Contextualization of embeddings.</strong>
+    Left: Static representation of “King”. Right: Updated embedding after attending to words like “Scotland” and “murdered predecessor.”
+  </figcaption>
+</figure>
+
+<p>These changes to the embedding are governed by <strong>self-attention layers</strong>, which compute context-aware representations.</p>
+
+<hr />
+
+<h3 id="encoder-self-attention">Encoder Self-Attention</h3>
+
+<p>The <strong>encoder</strong> in the Transformer takes the input sequence and transforms it into a series of contextualized embeddings. This is achieved using <strong>self-attention</strong>, which allows every input token to attend to all others.</p>
+
+<p>The attention weights are computed using the <strong>scaled dot-product attention</strong>:</p>
+
+<d-math block="">
+A(Q, K, V) = \mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+</d-math>
+
+<p>Where:</p>
+<ul>
+  <li>$Q$: query matrix</li>
+  <li>$K$: key matrix</li>
+  <li>$V$: value matrix</li>
+  <li>( d_k ): dimensionality of key vectors (used for scaling)</li>
+</ul>
+
+<p>This process enables each token to gather information from the rest of the sequence, weighted by relevance.</p>
+
+<figure id="encoder-attention" class="l-body-outset">
+  <div class="row">
+    <div class="col two">
+      <img src="/assets/img/notes/lecture-19/encoder-self-attention.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Encoder self-attention mechanism.</strong>
+    The encoder performs dot-product attention among all input tokens. Attention weights are used to compute a weighted sum of the value vectors. The result is passed through a feed-forward network and normalization layers.
+  </figcaption>
+</figure>
+
+<p>Each encoder block contains two key sub-layers:</p>
+<ul>
+  <li>A <strong>multi-head self-attention</strong> mechanism that enables learning different attention patterns across multiple subspaces.</li>
+  <li>A <strong>position-wise feed-forward network (FFNN)</strong> applied independently to each position.</li>
+</ul>
+
+<p>Each sub-layer is surrounded by:</p>
+<ul>
+  <li><strong>Residual connection</strong>: Adds the original input back to the sub-layer output.</li>
+  <li><strong>Layer normalization</strong>: Stabilizes and accelerates training.</li>
+</ul>
+
+<p>This entire structure is <strong>repeated $N$ times</strong> to produce progressively refined token representations that incorporate increasing levels of contextual information.</p>
+
+<hr />
+
+<h3 id="decoder-self-attention">Decoder Self-Attention</h3>
+
+<p>The decoder block in the Transformer uses <strong>masked self-attention</strong> to prevent peeking into future tokens. This mechanism calculates attention scores via dot products of query and key vectors, then uses softmax to generate weights for summing the value vectors.</p>
+
+<figure id="decoder-attention" class="l-body-outset">
+  <div class="row">
+    <div class="col two">
+      <img src="/assets/img/notes/lecture-19/decoder-self-attention.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Decoder self-attention mechanism.</strong>
+    Queries attend to keys and aggregate values based on scaled dot-product attention.
+  </figcaption>
+</figure>
+
+<p>This allows the decoder to produce output tokens sequentially, using prior outputs and the encoder’s output as context.</p>
+
+<hr />
+
+<h3 id="transformer-tricks">Transformer Tricks</h3>
+
+<p>Key design elements that make the Transformer effective:</p>
+
+<ul>
+  <li><strong>Self-Attention</strong>: Enables each token to attend to every other token, capturing long-range dependencies.</li>
+  <li><strong>Multi-Head Attention</strong>: Allows the model to learn various attention patterns in parallel.</li>
+  <li><strong>Normalized Dot-product Attention</strong>: Prevents scale issues by dividing dot-products by $\sqrt{d_k}$.</li>
+  <li><strong>Positional Encoding</strong>: Injects order information to compensate for lack of recurrence or convolution.</li>
+</ul>
+
+<hr />
+
+<h3 id="positional-encodings">Positional Encodings</h3>
+
+<p>Positional encodings (PEs) enable Transformers to model sequence order. Originally proposed by <d-cite key="vaswani2017attention"></d-cite>, PEs are added to word embeddings and typically use sinusoidal functions.</p>
+
+<p>However, new research suggests that Transformers can still learn <strong>positional information even without explicit encodings</strong> <d-cite key="haviv2022transformerlanguagemodelspositional"></d-cite>.</p>
+
+<figure id="positional-learnability" class="l-body-outset">
+  <div class="row">
+    <div class="col two">
+      <img src="/assets/img/notes/lecture-19/transformers-learn-positional-info.png" />
+    </div>
+  </div>
+  <figcaption>
+    <strong>Position information can still emerge.</strong>
+    Transformers trained without positional encodings still learn layer-wise relative position signals.
+  </figcaption>
+</figure>
+
+<p>This raises interesting questions about inductive biases and how much structure Transformers can learn from data alone.</p>
+
+
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Introduction to Probabilistic Graphical Models and Modern Probabilistic AI</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Ben Lengerich</li><li><a class="u-email" href="mailto:TBD@wisc.edu">TBD@wisc.edu</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/AdaptInfer" target="_blank"><i class="fab fa-github"></i> <span class="username">AdaptInfer</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>&copy; Copyright 2025 University of Wisconsin. <br />
+        Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+  <d-bibliography src="/pgm-spring-2025/assets/bibliography/2025-04-10-lecture-19.bib">
+  </d-bibliography>
+
+  <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/pgm-spring-2025/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.1/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.1/katex.min.js"></script>
+<script src="/pgm-spring-2025/assets/js/katex.js"></script>
+
+
+
+<!-- Load Anchor JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js"></script>
+<script>
+  anchors.options.visible = 'hover';
+  anchors.add('article h2, article h3, article h4, article h5, article h6');
+</script>
+
+
+
+<!-- Adjust LaTeX JS -->
+<script src="/pgm-spring-2025/assets/js/latex.js"></script>
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/pgm-spring-2025/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/pgm-spring-2025/assets/css/academicons.min.css">
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+</html>

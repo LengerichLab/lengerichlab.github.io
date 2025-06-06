@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>STAT 479 PGMs | Lecture 16 - Deep Learning from a GM Perspective</title>
+  <meta name="description" content="10-708 - Probabilistic Graphical Models - University of Wisconsin-Madison - Spring 2025
+">
+
+  <link rel="shortcut icon" href="/pgm-spring-2025/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/pgm-spring-2025/assets/css/main.css">
+  <link rel="canonical" href="/pgm-spring-2025/notes/lecture-16/">
+
+  
+  <!-- Load Latex JS -->
+  <script src="https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/latex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/latex.component.js"></script>
+  
+</head>
+
+    <script src="/pgm-spring-2025/assets/js/distillpub/template.v2.js"></script>
+    <script src="/pgm-spring-2025/assets/js/distillpub/transforms.v2.js"></script>
+  </head>
+
+  <d-front-matter>
+    <script type="text/json">{
+      "title": "Lecture 16 - Deep Learning from a GM Perspective",
+      "description": "Deep learning foundations viewed through the lens of graphical models, covering perceptrons, neural networks, backpropagation, and probabilistic interpretations.",
+      "published": "April 1, 2025",
+      "lecturers": [
+        
+      ],
+      "authors": [
+        
+        {
+          "author": "Steven E. Haworth"
+        },
+        
+        {
+          "author": "Ying Chen"
+        }
+        
+      ],
+      "editors": [
+        
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
+  </d-front-matter>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <span class="site-title">
+      <a class="page-link" href="https://adaptinfer.org/pgm-spring-2025/">STAT 479 PGMs</a>
+    </span>
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <a class="page-link" href="/pgm-spring-2025/logistics/">logistics</a>
+        <a class="page-link" href="/pgm-spring-2025/lectures/">lectures</a>
+        <a class="page-link" href="/pgm-spring-2025/notes/">notes</a>
+        <a class="page-link" href="/pgm-spring-2025/calendar/">calendar</a>
+        <a class="page-link" href="/pgm-spring-2025/homework/">homework</a>
+        <a class="page-link" href="/pgm-spring-2025/project/">project</a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+
+      <d-title>
+        <h1>Lecture 16 - Deep Learning from a GM Perspective</h1>
+        <p>Deep learning foundations viewed through the lens of graphical models, covering perceptrons, neural networks, backpropagation, and probabilistic interpretations.</p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <h2 id="logistics-review">Logistics Review</h2>
+
+<ul>
+  <li><strong>Class webpage</strong>: <a href="https://lengerichlab.github.io/pgm-spring-2025">lengerichlab.github.io/pgm-spring-2025</a></li>
+  <li><a href="https://docs.google.com/spreadsheets/d/1-Mj0MwkSxidVe-HfnMZyUIk4N8cwMeuGzEYTrgDjKqk/edit?gid=0">Lecture scribe sign-up sheet</a></li>
+  <li><strong>Readings,Class Announcements, Assignment Submissions</strong>: <a href="https://canvas.wisc.edu/courses/447453">Canvas</a></li>
+  <li><strong>Instructor</strong>: Ben Lengerich
+    <ul>
+      <li>Office Hours: Thursday 3:30-4:30pm, 7278 Medical Sciences Center</li>
+      <li>Email: <a href="mailto:lengerich@wisc.edu">lengerich@wisc.edu</a></li>
+    </ul>
+  </li>
+  <li><strong>TA</strong>: Chenyang Jiang
+    <ul>
+      <li>Office Hours: Monday 11am-12pm, 1219 Medical Sciences Center</li>
+      <li>Email: <a href="mailto:cjiang77@wisc.edu">cjiang77@wisc.edu</a></li>
+    </ul>
+  </li>
+  <li><strong>Module 3</strong>: Suggested focusing more on papers (or youtube vedios)</li>
+</ul>
+
+<h2 id="graded-material">Graded material</h2>
+
+<ul>
+  <li>Exam (20%, grades TBD)</li>
+  <li>Project midterm report (5%, 4/11)</li>
+  <li>Project presentation (5%, 4/31, 5/1)
+    <ul>
+      <li><a href="https://docs.google.com/spreadsheets/d/1ZRhn7_ESWGQRcdXahAdlHdoAW1gGG5UZbM98teQQpfY/edit?gid=0#gid=0">Sign up here!</a></li>
+    </ul>
+  </li>
+  <li>Project final report (15%, 5/5)</li>
+  <li>Extra credit (3%, <a href="https://docs.google.com/spreadsheets/d/1-Mj0MwkSxidVe-HfnMZyUIk4N8cwMeuGzEYTrgDjKqk/edit?gid=0#gid=0">sign-up</a>)</li>
+</ul>
+
+<h2 id="about-research-papers">About Research Papers</h2>
+
+<p>While research papers may appear rigorous and comprehensive, they often omit practical nuances. As learners, we should approach them optimistically — extracting value even from imperfect sources.</p>
+
+<hr />
+
+<h2 id="from-biological-to-artificial-neurons">From Biological to Artificial Neurons</h2>
+
+<p>Early AI models were inspired by biological neurons. The <strong>McCulloch &amp; Pitts</strong> neuron, proposed in 1943, used threshold logic to compute simple Boolean functions like AND and OR. However, it <strong>could not represent XOR</strong>.</p>
+
+<hr />
+
+<h2 id="the-perceptron-and-its-limits">The Perceptron and Its Limits</h2>
+
+<figure id="perceptron" class="l-body-outset">
+<div class="row">
+  <div class="col three">
+    <img src="/pgm-spring-2025/assets/img/notes/lecture-15/perceptron.png" style="width:80%; max-width:800px;" />
+  </div>
+</div>
+</figure>
+<p>The perceptron extended MP neurons by introducing <strong>weighted inputs</strong> and <strong>activation functions</strong> (like sigmoid):</p>
+
+<d-math block="">
+f(x) = \sigma(w^\top x + b)
+</d-math>
+
+<p>This model supports gradient-based learning for functions like:</p>
+
+<d-math block="">
+Y \sim \mathcal{N}(f(x), \Sigma) \Rightarrow \arg\min_w \sum_i \left(y_i - f(x_i; w)\right)^2
+</d-math>
+
+<h3 id="why-xor-cannot-be-represented">Why XOR Cannot Be Represented</h3>
+
+<p>Suppose XOR could be represented by a single-layer perceptron. Then:</p>
+
+<p>for input (1,1):</p>
+<d-math block="">
+\sigma(w_1 + w_2) &lt; \theta
+ </d-math>
+
+<p>for input (1,0), (0,1):</p>
+<d-math block="">
+ \sigma(w_1) \geq \theta ,  \sigma(w_2) \geq \theta 
+ </d-math>
+
+<p>Adding the latter two contradicts the first — <strong>no linear decision boundary exists</strong>.</p>
+
+<hr />
+
+<h2 id="multi-layer-perceptrons-mlp">Multi-Layer Perceptrons (MLP)</h2>
+
+<figure id="MLP" class="l-body-outset">
+<div class="row">
+  <div class="col three">
+    <img src="/pgm-spring-2025/assets/img/notes/lecture-15/NN.png" style="width:75%; max-width:800px;" />
+  </div>
+</div>
+</figure>
+
+<p>To model non-linear functions like XOR, <strong>multi-layer perceptrons</strong> are introduced:</p>
+
+<ul>
+  <li><strong>Input Layer</strong>:</li>
+</ul>
+
+<d-math block="">
+x
+</d-math>
+
+<ul>
+  <li><strong>Hidden Layer(s)</strong>:</li>
+</ul>
+
+<d-math block="">
+ h = \sigma(Wx + b) 
+</d-math>
+
+<ul>
+  <li><strong>Output Layer</strong>:</li>
+</ul>
+
+<d-math block="">
+ \hat{y} = W' h + b' 
+</d-math>
+
+<p>This architecture allows <strong>hierarchical feature extraction</strong> and can represent any continuous function under mild assumptions.</p>
+
+<hr />
+
+<h2 id="backpropagation">Backpropagation</h2>
+
+<p>Neural networks are compositions of differentiable functions:</p>
+
+<d-math block="">
+L = \ell(f_3(f_2(f_1(x))))
+</d-math>
+
+<p>The gradient is computed via <strong>reverse-mode autodiff</strong>:</p>
+
+<d-math block="">
+\frac{dL}{dx} = \frac{dL}{df_3} \cdot \frac{df_3}{df_2} \cdot \frac{df_2}{df_1} \cdot \frac{df_1}{dx}
+</d-math>
+
+<p>This process is the core of <strong>backpropagation</strong>, enabling scalable training of deep networks.</p>
+
+<hr />
+
+<h2 id="graphical-models-vs-deep-nets">Graphical Models vs. Deep Nets</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Graphical Models (GMs)</th>
+      <th>Deep Neural Networks (DNNs)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Probabilistic semantics</td>
+      <td>Function approximation</td>
+    </tr>
+    <tr>
+      <td>Explicit latent variables</td>
+      <td>Learned intermediate features</td>
+    </tr>
+    <tr>
+      <td>Inference via message passing</td>
+      <td>Learning via SGD</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>While GMs offer <strong>interpretability</strong>, DNNs provide <strong>flexibility and scalability</strong>. Hybrid models aim to combine both strengths.</p>
+
+<hr />
+
+<h2 id="probabilistic-neural-nets">Probabilistic Neural Nets</h2>
+
+<h3 id="restricted-boltzmann-machines-rbm">Restricted Boltzmann Machines (RBM)</h3>
+
+<figure id="RBM" class="l-body-outset">
+  <div class="row">
+    <div class="col three">
+      <img src="/pgm-spring-2025/assets/img/notes/lecture-15/RBM.png" style="width:60%; max-width:800px;" />
+    </div>
+  </div>
+  </figure>
+
+<p>An RBM is an undirected graphical model with visible ( v ) and hidden ( h ) units:</p>
+
+<d-math block="">
+P(v, h) \propto e^{-E(v, h)}, \quad E(v, h) = -v^\top W h - a^\top v - b^\top h
+</d-math>
+
+<p>RBMs are trained using <strong>contrastive divergence</strong>, and serve as building blocks for deeper models.</p>
+
+<hr />
+
+<h3 id="deep-belief-networks-dbn">Deep Belief Networks (DBN)</h3>
+
+<figure id="DBN" class="l-body-outset">
+  <div class="row">
+    <div class="col one">
+      <img src="/pgm-spring-2025/assets/img/notes/lecture-15/DBN.png" />
+    </div>
+    <div class="col one">
+      <img src="/pgm-spring-2025/assets/img/notes/lecture-15/pretraining.png" />
+    </div>
+  </div>
+</figure>
+
+<p>DBNs stack multiple RBMs and apply <strong>layer-wise pretraining</strong>, followed by supervised fine-tuning. They offer a probabilistic view of deep learning, with each layer capturing increasingly abstract representations.</p>
+
+<hr />
+
+<h2 id="nns-and-gmsnatural-complements">NNs and GMs—Natural Complements</h2>
+
+<p>Neural networks and graphical models represent two major paradigms in probabilistic AI. While they originate from different modeling philosophies, they can be viewed as <strong>complementary</strong> in both function and design.</p>
+
+<p>Graphical models (GMs) offer <strong>structured representations</strong> of joint distributions, with explicit semantics over variables and their dependencies. In contrast, neural networks (NNs) are powerful <strong>function approximators</strong>, trained end-to-end via gradient-based optimization. Despite this apparent contrast, many modern systems integrate the two:</p>
+
+<ul>
+  <li>
+    <p><strong>GMs for interpretability, NNs for flexibility</strong>: GMs allow for explicit latent structure and reasoning under uncertainty, while NNs can model complex, high-dimensional mappings without handcrafted features.</p>
+  </li>
+  <li>
+    <p><strong>Neural modules within probabilistic models</strong>: In structured prediction, NNs can be used to parameterize potentials in conditional random fields (CRFs), or emission probabilities in HMMs.</p>
+  </li>
+  <li>
+    <p><strong>Probabilistic perspectives on NNs</strong>: Some architectures (e.g., RBMs, DBNs) are inherently graphical models, and even standard feedforward networks can be viewed as approximate inference in layered latent variable models.</p>
+  </li>
+  <li>
+    <p><strong>Uncertainty estimation in NNs</strong>: Probabilistic modeling techniques such as variational inference or Bayesian dropout can be used to <strong>quantify uncertainty</strong> in neural predictions, a critical aspect in safety-sensitive domains.</p>
+  </li>
+</ul>
+
+<p>Specific examples include:</p>
+
+<ul>
+  <li>
+    <p>Collobert &amp; Weston, 2011<d-cite key="graves2013speech"></d-cite> combined recurrent neural networks with probabilistic decoding in speech recognition, using RNNs for acoustic modeling and probabilistic search for decoding.</p>
+  </li>
+  <li>
+    <p>Toosi et al., 2021<d-cite key="collobert2011natural"></d-cite> applied deep networks to NLP tasks, where word embeddings are learned by a neural network, and structured output is modeled using CRFs.</p>
+  </li>
+</ul>
+
+<p>Ultimately, <strong>the synergy between GMs and NNs</strong> enables systems that are both expressive and interpretable.</p>
+
+<hr />
+
+
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Introduction to Probabilistic Graphical Models and Modern Probabilistic AI</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Ben Lengerich</li><li><a class="u-email" href="mailto:TBD@wisc.edu">TBD@wisc.edu</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/AdaptInfer" target="_blank"><i class="fab fa-github"></i> <span class="username">AdaptInfer</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>&copy; Copyright 2025 University of Wisconsin. <br />
+        Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+  <d-bibliography src="/pgm-spring-2025/assets/bibliography/2025-04-01-lecture-16.bib">
+  </d-bibliography>
+
+  <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/pgm-spring-2025/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.1/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.1/katex.min.js"></script>
+<script src="/pgm-spring-2025/assets/js/katex.js"></script>
+
+
+
+<!-- Load Anchor JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js"></script>
+<script>
+  anchors.options.visible = 'hover';
+  anchors.add('article h2, article h3, article h4, article h5, article h6');
+</script>
+
+
+
+<!-- Adjust LaTeX JS -->
+<script src="/pgm-spring-2025/assets/js/latex.js"></script>
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/pgm-spring-2025/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/pgm-spring-2025/assets/css/academicons.min.css">
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+</html>
