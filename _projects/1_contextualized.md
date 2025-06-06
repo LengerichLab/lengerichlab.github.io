@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Context-adaptive systems
+title: Contextualized learning
 description: Statistical models that adapt to patient, task, or environmental context.
 img: assets/img/heterogeneity.jpeg
 importance: 1
