@@ -208,7 +208,7 @@ kramdown:
       start_line: 1
 
 # Includes & excludes
-include: ["_pages"]
+include: ["_pages", "dgm-fall-2025", "pgm-spring-2025"]
 exclude:
   - bin/
   - CONTRIBUTING.md
