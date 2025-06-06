@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="en">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>STAT 479 PGMs | Lecture 02 - Statistics review</title>
+  <meta name="description" content="10-708 - Probabilistic Graphical Models - University of Wisconsin-Madison - Spring 2025
+">
+
+  <link rel="shortcut icon" href="/pgm-spring-2025/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/pgm-spring-2025/assets/css/main.css">
+  <link rel="canonical" href="/pgm-spring-2025/notes/lecture-02/">
+
+  
+  <!-- Load Latex JS -->
+  <script src="https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/latex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/latex.component.js"></script>
+  
+</head>
+
+    <script src="/pgm-spring-2025/assets/js/distillpub/template.v2.js"></script>
+    <script src="/pgm-spring-2025/assets/js/distillpub/transforms.v2.js"></script>
+  </head>
+
+  <d-front-matter>
+    <script type="text/json">{
+      "title": "Lecture 02 - Statistics review",
+      "description": "A statistics review, including MLE and MAP",
+      "published": "January 23, 2025",
+      "lecturers": [
+        
+        {
+          "lecturer": "Ben Lengerich",
+          "lecturerURL": "https://lengerichlab.github.io/"
+        }
+        
+      ],
+      "authors": [
+        
+        {
+          "author": "Michael Zhang"
+        },
+        
+        {
+          "author": "Scott Sheng"
+        }
+        
+      ],
+      "editors": [
+        
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
+  </d-front-matter>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <span class="site-title">
+      <a class="page-link" href="https://adaptinfer.org/pgm-spring-2025/">STAT 479 PGMs</a>
+    </span>
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <a class="page-link" href="/pgm-spring-2025/logistics/">logistics</a>
+        <a class="page-link" href="/pgm-spring-2025/lectures/">lectures</a>
+        <a class="page-link" href="/pgm-spring-2025/notes/">notes</a>
+        <a class="page-link" href="/pgm-spring-2025/calendar/">calendar</a>
+        <a class="page-link" href="/pgm-spring-2025/homework/">homework</a>
+        <a class="page-link" href="/pgm-spring-2025/project/">project</a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+
+      <d-title>
+        <h1>Lecture 02 - Statistics review</h1>
+        <p>A statistics review, including MLE and MAP</p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <ul>
+  <li><a href="#logistics-review">Logistics Review</a></li>
+  <li><a href="#homework-info">Homework info</a></li>
+  <li><a href="#probability-basics"><strong>Probability Basics</strong></a></li>
+  <li><a href="#estimation-methods"><strong>Estimation Methods</strong></a></li>
+  <li><a href="#linear-regression"><strong>Linear Regression</strong></a></li>
+  <li><a href="#optimization"><strong>Optimization</strong></a></li>
+</ul>
+
+<h2 id="logistics-review">Logistics Review</h2>
+
+<ul>
+  <li><strong>Class webpage</strong>: <a href="https://lengerichlab.github.io/pgm-spring-2025">lengerichlab.github.io/pgm-spring-2025</a></li>
+  <li><a href="https://docs.google.com/spreadsheets/d/1-Mj0MwkSxidVe-HfnMZyUIk4N8cwMeuGzEYTrgDjKqk/edit?gid=0">Lecture scribe sign-up sheet</a></li>
+  <li><strong>Readings,Class Announcements, Assignment Submissions</strong>: <a href="https://canvas.wisc.edu/courses/447453">Canvas</a></li>
+  <li><strong>Instructor</strong>: Ben Lengerich
+    <ul>
+      <li>Office Hours: Thursday 2:30-3:30pm, 7278 Medical Sciences Center</li>
+      <li>Email: <a href="mailto:lengerich@wisc.edu">lengerich@wisc.edu</a></li>
+    </ul>
+  </li>
+  <li><strong>TA</strong>: Chenyang Jiang
+    <ul>
+      <li>Office Hours: Monday 11am-12pm, 1219 Medical Sciences Center</li>
+      <li>Email: <a href="mailto:cjiang77@wisc.edu">cjiang77@wisc.edu</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="homework-info">HomeWork info</h2>
+<ul>
+  <li><strong>Released</strong>: Due next Friday at midnight.
+    <ul>
+      <li>PDF and Latex solution template (<code class="language-plaintext highlighter-rouge">.tex</code>) available on website.</li>
+    </ul>
+  </li>
+  <li><strong>Submit via</strong>: <a href="https://canvas.wisc.edu/courses/447453/assignments">Canvas</a></li>
+  <li><strong>Most preferred format</strong>:
+    <ul>
+      <li>PDF with your solution written in the provided solution box using LaTeX.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="probability-basics">Probability Basics</h2>
+
+<ul>
+  <li><strong>Random Variables</strong>:
+    <ul>
+      <li><strong>Discrete</strong>: Values that come from a countable set, meaning they can take on specific, distinct values. For example, the outcome of a coin flip ((0) for tails, (1) for heads) or the number of students in a classroom. Discrete random variables are often associated with scenarios where the possible outcomes can be listed or enumerated.</li>
+      <li><strong>Continuous</strong>: Values that come from an interval or range on the real number line, meaning they can take on infinitely many possible values within that range. For instance, a person’s height (e.g., 170.5 cm) or the time it takes to complete a task (e.g., 2.34 hours). Continuous random variables are typically associated with measurements and involve smooth distributions.</li>
+    </ul>
+  </li>
+  <li><strong>PMF and PDF</strong>:
+    <ul>
+      <li><strong>Probability Mass Function (PMF)</strong>: (P(X = x)) for discrete (X).</li>
+      <li><strong>Probability Density Function (PDF)</strong>: (f(x)) for continuous (X).</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Bernoulli Distribution</strong></p>
+
+    <d-math block="">
+P(X = x) = \theta^x (1 - \theta)^{1-x}, \, x \in \{0, 1\}
+</d-math>
+
+    <p>The Bernoulli distribution is one of the simplest discrete probability distributions, representing a single trial with two possible outcomes: success ((x = 1)) and failure ((x = 0)). It is parameterized by (\theta), which denotes the probability of success. This distribution is commonly used to model binary outcomes, such as flipping a coin, where the probability of heads or tails remains constant across trials.</p>
+
+    <ul>
+      <li>Example: A fair coin flip ($\theta = 0.5$).<br />
+In this case, the probability of success (e.g., heads) and failure (e.g., tails) are both equal to 0.5, making it a symmetric Bernoulli distribution. This example demonstrates how Bernoulli distributions are foundational for understanding more complex probabilistic models, such as the Binomial distribution.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Gaussian Distribution</strong></p>
+
+    <d-math block="">
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+</d-math>
+
+    <p>The Gaussian distribution, also known as the normal distribution, is a continuous probability distribution widely used in statistics and machine learning. It is characterized by its symmetric, bell-shaped curve, which is determined by two parameters:</p>
+    <ol>
+      <li>$\mu$ (mean): Represents the center of the distribution, indicating where most data points are likely to be concentrated.</li>
+      <li>$\sigma$ (standard deviation): Controls the spread or dispersion of the data, with larger values indicating a wider distribution.</li>
+    </ol>
+
+    <p>The Gaussian distribution is fundamental in statistical theory due to the Central Limit Theorem, which states that the sum of a large number of independent random variables tends to follow a Gaussian distribution, regardless of the original distributions of the variables.</p>
+
+    <ul>
+      <li>
+        <p><strong>“Normal”</strong>: Because of Central Limit Theorem.<br />
+The term “normal” arises from the Central Limit Theorem, which underscores the prevalence of this distribution in natural and social phenomena. For example, measurements like height, weight, and test scores often approximate a normal distribution.</p>
+      </li>
+      <li>
+        <p><strong>“Standard Normal”</strong>: When $\mu = 0$, $\sigma = 1$.<br />
+The standard normal distribution is a special case of the Gaussian distribution with a mean of 0 and a standard deviation of 1. It is often used in z-score calculations and statistical inference, where raw data are transformed into a standardized form for comparison across datasets.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Central Limit Theorem</strong></p>
+
+    <ul>
+      <li>Let $X_1, X_2, \dots, X_n$ be i.i.d. random variables with mean $ \mu $ and variance $ \sigma^2 $.</li>
+      <li>Define the sample mean:</li>
+    </ul>
+
+    <d-math block="">
+\overline{X}_n = \frac{1}{n} \sum_{i=1}^n X_i
+</d-math>
+
+    <ul>
+      <li>Then, as $ n \to \infty $:</li>
+    </ul>
+
+    <d-math block="">
+\frac{\overline{X}_n - \mu}{\sigma / \sqrt{n}} \to N(0, 1)
+</d-math>
+  </li>
+  <li><strong>Explanation:</strong>
+The Central Limit Theorem (CLT) is a fundamental result in probability and statistics, stating that the distribution of the sample mean of i.i.d. random variables approaches a normal distribution as the sample size $ n $ increases, regardless of the original distribution of the variables. Key points include:
+    <ol>
+      <li><strong>Independence and Identically Distributed (i.i.d.)</strong>: The variables $ X_1, X_2, \dots, X_n $ must be independent and drawn from the same distribution.</li>
+      <li><strong>Sample Mean ($ \overline{X}_n $)</strong>: Represents the average of the observations, serving as an estimator of the population mean $ \mu $.</li>
+      <li><strong>Standardized Form</strong>: The standardized version of $ \overline{X}_n $, given by $ \frac{\overline{X}_n - \mu}{\sigma / \sqrt{n}} $, converges to the standard normal distribution $ N(0, 1) $.</li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>Joint, Marginal, and Conditional Probabilities</strong></p>
+
+    <ul>
+      <li><strong>Joint</strong>: $P(A, B)$, the probability of two events occurring together.</li>
+      <li><strong>Marginal</strong>: $P(A) = \sum_B P(A, B)$, the sum of joint probabilities over one variable.</li>
+      <li><strong>Conditional</strong>: $P(A \mid B) = \frac{P(A, B)}{P(B)}$, the probability of $A$ given $B$.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Expectation and Variance</strong></p>
+
+    <ul>
+      <li><strong>Expectation</strong>:
+        <ul>
+          <li>Discrete: $E[X] = \sum_x xP(X = x)$</li>
+          <li>Continuous: $E[X] = \int x f(x) dx$</li>
+        </ul>
+      </li>
+      <li><strong>Variance</strong>:
+        <ul>
+          <li>Definition: $Var(X) = E[(X - E[X])^2]$</li>
+          <li>Equivalent: $Var(X) = E[X^2] - (E[X])^2$</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Linearity of Expectation</strong></p>
+      </li>
+      <li><strong>Property</strong>:
+        <ul>
+          <li>$E[aX + b] = aE[X] + b$</li>
+        </ul>
+      </li>
+      <li><strong>Multiple Variables</strong>:
+        <ul>
+          <li>$E[X_1 + X_2] = E[X_1] + E[X_2]$</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Expectation of Functions</strong></p>
+
+    <ul>
+      <li><strong>Formula</strong>:
+        <ul>
+          <li>Discrete: $E[g(X)] = \sum_x g(x)P(X = x)$</li>
+          <li>Continuous: $E[g(X)] = \int g(x)f(x)dx$</li>
+        </ul>
+      </li>
+      <li><strong>Example (Discrete)</strong>:
+        <ul>
+          <li>If $X \sim Bernoulli(\theta)$ and $g(X) = X^2$, then:
+$E[g(X)] = 1^2\theta + 0^2(1 - \theta) = \theta$</li>
+        </ul>
+      </li>
+      <li><strong>Example (Continuous)</strong>:
+        <ul>
+          <li>If $X \sim Uniform(0, 1)$ and $g(X) = X^2$, then:
+$E[g(X)] = \int_0^1 x^2 dx = \frac{1}{3}$</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Variance of Functions</strong></p>
+
+    <ul>
+      <li><strong>Definition</strong>:
+        <ul>
+          <li>$Var(g(X)) = E[(g(X) - E[g(X)])^2]$</li>
+          <li>Equivalent: $Var(g(X)) = E[g(X)^2] - (E[g(X)])^2$</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Covariance and Correlation</strong></p>
+
+    <ul>
+      <li><strong>Covariance</strong>:
+        <ul>
+          <li>$Cov(X, Y) = E[(X - E[X])(Y - E[Y])]$</li>
+          <li>Covariance measures the degree to which two random variables change together. A positive value indicates that as one variable increases, the other tends to increase as well, while a negative value indicates the opposite.</li>
+        </ul>
+      </li>
+      <li><strong>Properties</strong>:
+        <ul>
+          <li>$Cov(X, X) = Var(X)$: The covariance of a variable with itself is its variance.</li>
+          <li>If $X$ and $Y$ are independent: $Cov(X, Y) = 0$, meaning there is no linear relationship between the variables.</li>
+        </ul>
+      </li>
+      <li><strong>Correlation</strong>:
+        <ul>
+          <li>$\rho(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var(X)Var(Y)}}$: Correlation is a normalized version of covariance, which scales the relationship between $X$ and $Y$ to the range $[-1, 1]$.</li>
+          <li>$\rho = 1$: Perfect positive linear relationship.</li>
+          <li>$\rho = 0$: No linear relationship.</li>
+          <li>$\rho = -1$: Perfect negative linear relationship.</li>
+          <li>Correlation ($\rho$) can vary depending on the context and the nature of the data. It provides a relative measure of linear dependence that can be influenced by changes in scale or units. Correlation can also be quantified and analyzed using specific functions to better understand the relationships within different contexts.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>-<strong>Bayes’ Rule</strong></p>
+<ul>
+  <li>Formula:
+$P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}$</li>
+  <li><strong>Example</strong> (Medical test):</li>
+  <li>$P(disease \mid positive \ test) = \frac{P(positive \ test \mid disease) P(disease)}{P(positive \ test)}$</li>
+  <li>In this example, the goal is to calculate the probability that a patient has a disease given a positive test result. This is a typical application of Bayes’ Rule in medical diagnostics.</li>
+  <li>$P(positive \ test \mid disease)$ represents the sensitivity of the test (true positive rate), indicating the likelihood of a positive result if the patient has the disease.</li>
+  <li>$P(disease)$ is the prior probability, or the prevalence of the disease in the population.</li>
+  <li>$P(positive \ test)$ is the overall probability of a positive test, which accounts for both true positives and false positives.</li>
+  <li>By combining these factors, Bayes’ Rule helps adjust the prior belief about the disease based on the observed test result, allowing for more accurate diagnosis. This is especially useful when the disease is rare, as the prior probability significantly impacts the result.</li>
+</ul>
+
+<h2 id="estimation-methods">Estimation Methods</h2>
+
+<ul>
+  <li>
+    <p><strong>Introduction to Estimation</strong></p>
+
+    <ul>
+      <li><strong>Goal of Estimation</strong>:
+        <ul>
+          <li>Infer unknown parameters $\theta$ from observed data.</li>
+          <li>Estimation aims to use sample data to make inferences about the population, bridging the gap between data and statistical models.</li>
+        </ul>
+      </li>
+      <li><strong>Types of Estimation</strong>:
+        <ul>
+          <li><strong>Point Estimation</strong>:
+            <ul>
+              <li>Provides a single best guess for the parameter (e.g., Maximum Likelihood Estimation, MLE).</li>
+              <li>Example: Estimating the mean of a population using the sample mean.</li>
+            </ul>
+          </li>
+          <li><strong>Interval Estimation</strong>:
+            <ul>
+              <li>Provides a range of plausible values for the parameter (e.g., confidence intervals).</li>
+              <li>Example: Giving a 95% confidence interval for the mean, indicating that the true mean is likely within this range.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Common Methods</strong>:
+        <ul>
+          <li><strong>Maximum Likelihood Estimation (MLE)</strong>:
+            <ul>
+              <li>Finds the parameter value that maximizes the likelihood of observing the given data.</li>
+              <li>Example: Used in logistic regression or fitting distributions.</li>
+            </ul>
+          </li>
+          <li><strong>Maximum A Posteriori (MAP)</strong>:
+            <ul>
+              <li>Combines prior knowledge with the data to estimate the parameter, often used in Bayesian inference.</li>
+            </ul>
+          </li>
+          <li><strong>Method of Moments</strong>:
+            <ul>
+              <li>Matches sample moments (e.g., mean, variance) with theoretical moments to estimate parameters.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Maximum Likelihood Estimation (MLE)</strong></p>
+
+    <ul>
+      <li><strong>Definition</strong>:
+        <ul>
+          <li>Find $\hat{\theta}$ that maximizes the likelihood of observing the given data.</li>
+          <li>$\hat{\theta} = \underset{\theta}{\text{argmax}} \, L(\theta)$, where $L(\theta) = P(\text{data} \mid \theta)$.</li>
+        </ul>
+      </li>
+      <li><strong>Interpretation</strong>:
+        <ul>
+          <li>$L(\theta)$ represents the probability of the observed data given $\theta$.</li>
+          <li>The MLE selects the parameter $\theta$ that makes the observed data the most “likely.”</li>
+          <li>It’s a widely used method due to its simplicity and strong statistical properties under large sample conditions.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <figure id="Maximum Likelihood Estimation" class="l-body-outset">
+<div class="row">
+  <div class="col three">
+    <img src="/assets/img/notes/lecture-02/MLE.png" style="width:80%; max-width:800px;" />
+  </div>
+</div>
+</figure>
+  </li>
+  <li>
+    <p><strong>Example (MLE with Bernoulli Distribution)</strong></p>
+
+    <ul>
+      <li><strong>Dataset</strong>: $X = {1, 0, 1, 1, 0}$.</li>
+      <li><strong>Bernoulli distribution</strong>:
+        <ul>
+          <li>$P(X = 1 \mid \theta) = \theta$ and $P(X = 0 \mid \theta) = 1 - \theta$.</li>
+          <li>Likelihood function: $L(\theta) = \prod_i \theta^{x_i} (1 - \theta)^{1 - x_i}$.</li>
+        </ul>
+      </li>
+      <li><strong>Log-likelihood function</strong>:
+        <ul>
+          <li>$\ell(\theta) = \log L(\theta) = \sum_{i=1}^n x_i \log \theta + (1 - x_i) \log (1 - \theta)$.</li>
+        </ul>
+      </li>
+      <li><strong>Derivative and solution</strong>:
+        <ul>
+          <li>$\frac{d\ell}{d\theta} = \frac{k}{\theta} - \frac{n - k}{1 - \theta}$, where $k = \sum x_i$.</li>
+          <li>$\hat{\theta} = \frac{k}{n}$.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>This example shows the computational steps to estimate $\theta$, demonstrating how MLE converts complex probabilistic models into simpler optimization problems.</p>
+  </li>
+  <li>
+    <p><strong>Limitations of MLE</strong></p>
+
+    <ul>
+      <li>The MLE:
+        <ul>
+          <li>Does not always exist (e.g., when data provides insufficient information).</li>
+          <li>Is not necessarily unique (e.g., multimodal likelihood functions).</li>
+          <li>May not be admissible (e.g., in small sample sizes, other estimators may perform better).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Maximum A Posteriori (MAP) Estimation</strong></p>
+
+    <ul>
+      <li><strong>Definition</strong>:
+        <ul>
+          <li>$\hat{\theta}_{MAP} = \underset{\theta}{\text{argmax}} \, P(\theta \mid \text{data}) \propto P(\text{data} \mid \theta) P(\theta)$.</li>
+        </ul>
+      </li>
+      <li><strong>Interpretation</strong>:
+        <ul>
+          <li>$P(\text{data} \mid \theta)$ is the likelihood.</li>
+          <li>$P(\theta)$ incorporates prior knowledge or beliefs about $\theta$.</li>
+          <li>MAP extends MLE by integrating prior information, providing more robust estimates in certain scenarios.</li>
+        </ul>
+      </li>
+    </ul>
+    <figure id="MAP" class="l-body-outset">
+<div class="row">
+  <div class="col three">
+    <img src="/assets/img/notes/lecture-02/MAP.png" style="width:80%; max-width:800px;" />
+  </div>
+</div>
+</figure>
+  </li>
+  <li>
+    <p><strong>Regularization and MAP</strong></p>
+
+    <ul>
+      <li><strong>MLE with Regularization</strong>:
+        <ul>
+          <li>Adds a penalty term to the log-likelihood to avoid overfitting:
+            <ul>
+              <li>$\hat{\theta}_{\text{reg}} = \underset{\theta}{\text{argmax}} \, [\log L(\theta) - \lambda R(\theta)]$.</li>
+            </ul>
+            <figure id="Maximum Likelihood Estimation" class="l-body-outset">
+<div class="row">
+  <div class="col three">
+    <img src="/assets/img/notes/lecture-02/regular.png" style="width:80%; max-width:800px;" />
+  </div>
+</div>
+</figure>
+          </li>
+        </ul>
+      </li>
+      <li><strong>MAP as Penalized MLE</strong>:
+        <ul>
+          <li>By letting $P(\theta) \propto e^{-\lambda R(\theta)}$, MAP naturally incorporates the penalty:
+            <ul>
+              <li>$\hat{\theta}<em>{MAP} = \underset{\theta}{\text{argmax}} \, [\log L(\theta) + \log P(\theta)] = \hat{\theta}</em>{\text{reg}}$.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Method of Moments</strong></p>
+
+    <ul>
+      <li><strong>Definition</strong>:
+        <ul>
+          <li>Matches sample moments (e.g., mean, variance) to theoretical moments to estimate parameters.</li>
+        </ul>
+      </li>
+      <li><strong>Example</strong>:
+        <ul>
+          <li><strong>Bernoulli Distribution</strong>:
+            <ul>
+              <li>$E[X] = \theta$, so $\hat{\theta} = \bar{X}$ (sample mean).</li>
+            </ul>
+          </li>
+          <li><strong>Gaussian Distribution</strong>:
+            <ul>
+              <li>$E[X] = \mu$, $Var(X) = \sigma^2$.</li>
+              <li>$\hat{\mu} = \bar{X}$, $\hat{\sigma}^2 = \frac{1}{n} \sum (X_i - \bar{X})^2$.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>The method of moments provides a simple and intuitive alternative to MLE, particularly for models where moments are directly tied to parameters.</p>
+  </li>
+</ul>
+
+<h2 id="linear-regression">Linear Regression</h2>
+
+<ul>
+  <li><strong>Model Definition</strong>
+    <ul>
+      <li>$y = X \beta + \epsilon$, where:
+        <ul>
+          <li>$y$: Response variable (dependent variable).</li>
+          <li>$X$: Design matrix (independent variables or features).</li>
+          <li>$\beta$: Coefficients (parameters to estimate).</li>
+          <li>$\epsilon$: Error term (often assumed to be $N(0, \sigma^2)$).</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>-<strong>Goal</strong></p>
+    <ul>
+      <li>Estimate $\beta$.</li>
+    </ul>
+  </li>
+  <li><strong>Linear Regression Evaluation Metrics</strong>
+    <ul>
+      <li><strong>Coefficient of Determination ($R^2$)</strong>:
+        <ul>
+          <li>$R^2 = 1 - \frac{SS_{residual}}{SS_{total}}$</li>
+          <li>Measures the proportion of variance explained by the model.</li>
+        </ul>
+      </li>
+      <li><strong>Mean Squared Error (MSE)</strong>:
+        <ul>
+          <li>$MSE = \frac{1}{n} \sum (y_i - \hat{y}_i)^2$</li>
+          <li>Measures the squared error between predictions and actual values.</li>
+        </ul>
+      </li>
+      <li><strong>Mean Absolute Error (MAE)</strong>:
+        <ul>
+          <li>
+            <table>
+              <tbody>
+                <tr>
+                  <td>$MAE = \frac{1}{n} \sum</td>
+                  <td>y_i - \hat{y}_i</td>
+                  <td>$</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>Measures the absolute error between predictions and actual values.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Ordinary Least Squares (OLS)</strong>
+    <ul>
+      <li><strong>Objective</strong>:
+        <ul>
+          <li>Minimize the sum of squared residuals:
+$ \hat{\beta}<em>{OLS} = \arg \min</em>\beta |y - X\beta|^2$</li>
+        </ul>
+      </li>
+      <li><strong>Residuals</strong>:
+        <ul>
+          <li>$e_i = y_i - \hat{y}_i$</li>
+        </ul>
+      </li>
+      <li><strong>Solution</strong>:
+        <ul>
+          <li>$\hat{\beta}_{OLS} = (X^T X)^{-1} X^T y$</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Regularization in Linear Regression (MAP)</strong></p>
+
+    <ul>
+      <li><strong>Ridge Regression (L2 Regularization)</strong>:</li>
+      <li>Adds an $L2$ penalty:
+$ \hat{\beta}<em>{ridge} = \arg \min</em>\beta |y - X\beta|^2 + \lambda |\beta|^2$</li>
+      <li>Equivalent MAP interpretation:
+        <ul>
+          <li>Prior on coefficients: $\beta \sim N(0, \frac{\sigma^2}{\lambda})$.</li>
+          <li>MAP estimate maximizes $P(\beta \mid y)$ by incorporating prior information.</li>
+        </ul>
+      </li>
+      <li><strong>Lasso Regression (L1 Regularization)</strong>:</li>
+      <li>Adds an $L1$ penalty:
+$ \hat{\beta}<em>{lasso} = \arg \min</em>\beta |y - X\beta|^2 + \lambda |\beta|_1$</li>
+      <li>Equivalent to $\beta \sim Laplace(0, \frac{\sigma^2}{\lambda})$.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Extensions of Linear Regression</strong></p>
+
+    <ul>
+      <li><strong>Polynomial Regression</strong>:</li>
+      <li>
+        <p>Adds polynomial terms:
+$y = \beta_0 + \beta_1 x + \beta_2 x^2 + \dots$</p>
+      </li>
+      <li><strong>Generalized Linear Models</strong>:</li>
+      <li>
+        <p>Extends to non-normal distributions by a link function:
+$g(E[Y]) = X\beta$</p>
+      </li>
+      <li><strong>Interaction Terms</strong>:</li>
+      <li>Includes interactions between predictors:
+$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2$</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="optimization">Optimization</h2>
+<ul>
+  <li><strong>Convexity</strong>
+    <ul>
+      <li>Definition:
+$ \forall \lambda \in [0,1], \, f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y). $</li>
+      <li>Convex functions satisfy a relaxed linearity, meaning the function value at any point along the line segment between $x$ and $y$ is no greater than the weighted average of the function values at $x$ and $y$.</li>
+    </ul>
+  </li>
+  <li><strong>Strictly Convex Function</strong></li>
+  <li>Definition:
+$ \forall \lambda \in (0,1), \, f(\lambda x + (1-\lambda)y) &lt; \lambda f(x) + (1-\lambda)f(y). $</li>
+  <li>
+    <p>Strict convexity ensures the function curves strictly below the weighted average line unless $x=y$, which provides stronger guarantees in optimization.</p>
+  </li>
+  <li><strong>Strongly Convex Function</strong></li>
+  <li>Definition:
+$ \exists \mu &gt; 0, \, x \mapsto f(x) - \mu |x|^2 \text{ is convex.} $</li>
+  <li>Alternatively:
+$ f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y) - \mu \lambda (1-\lambda)|x-y|^2. $</li>
+  <li>
+    <p>Strong convexity strengthens the guarantees of convexity by penalizing deviations, providing faster convergence in optimization algorithms.</p>
+  </li>
+  <li>
+    <p>**Convexity Aids Optimization</p>
+  </li>
+  <li><strong>Implications</strong>
+    <ul>
+      <li>If $ f $ is convex and differentiable:
+$ f(y) \geq f(x) + \nabla f(x)^T (y-x). $</li>
+      <li>Key results:
+        <ul>
+          <li><strong>Convex function</strong>: All local minima are global minima.</li>
+          <li><strong>Strictly convex function</strong>: A local minimum is unique and global.</li>
+          <li><strong>Strongly convex function</strong>: Ensures a unique local minimum with better optimization convergence properties.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>Convexity simplifies optimization problems by ensuring the absence of local minima other than the global one, and strong convexity further aids optimization with faster convergence.</p>
+  </li>
+  <li><strong>Convexity is Overrated</strong>
+    <ul>
+      <li><strong>Practical Perspective</strong>:
+        <ul>
+          <li><a href="https://cs.nyu.edu/~yann/talks/lecun-20071207-nonconvex.pdf">Yann LeCun</a> highlights that suitable architectures often outweigh the necessity of convexity.</li>
+          <li>Example: Shallow (convex) classifiers vs. Deep (non-convex) classifiers.</li>
+        </ul>
+      </li>
+      <li><strong>Non-Convex Advantages</strong>:
+        <ul>
+          <li>Non-convex loss functions can improve accuracy and speed.</li>
+          <li>Even shallow architectures like SVMs benefit from non-convex loss.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>While convexity ensures theoretical guarantees, real-world machine learning tasks often achieve better performance by embracing non-convex approaches, especially in modern neural networks.</p>
+  </li>
+</ul>
+
+
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Introduction to Probabilistic Graphical Models and Modern Probabilistic AI</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Ben Lengerich</li><li><a class="u-email" href="mailto:TBD@wisc.edu">TBD@wisc.edu</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/AdaptInfer" target="_blank"><i class="fab fa-github"></i> <span class="username">AdaptInfer</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>&copy; Copyright 2025 University of Wisconsin. <br />
+        Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+  <d-bibliography src="/pgm-spring-2025/assets/bibliography/2025-01-23-lecture-02.bib">
+  </d-bibliography>
+
+  <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/pgm-spring-2025/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.1/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.1/katex.min.js"></script>
+<script src="/pgm-spring-2025/assets/js/katex.js"></script>
+
+
+
+<!-- Load Anchor JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js"></script>
+<script>
+  anchors.options.visible = 'hover';
+  anchors.add('article h2, article h3, article h4, article h5, article h6');
+</script>
+
+
+
+<!-- Adjust LaTeX JS -->
+<script src="/pgm-spring-2025/assets/js/latex.js"></script>
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/pgm-spring-2025/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/pgm-spring-2025/assets/css/academicons.min.css">
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+</html>
