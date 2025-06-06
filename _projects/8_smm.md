@@ -7,6 +7,7 @@ importance: 4
 category: applications
 related_publications: true
 ---
+
 <div class="row">
   <div class="col-md-6 mx-auto">
 {% include figure.liquid loading="eager" path="assets/img/maternal.jpeg" title="Maternal" class="img-fluid rounded z-depth-1" %}

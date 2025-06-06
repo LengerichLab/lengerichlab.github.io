@@ -15,11 +15,12 @@ In scientific and high-stakes domains, we need AI systems that are not only accu
 We explore **interaction effects** as a key barrier to interpretability. Interaction effects arise when two or more input components must be considered jointly to affect the output—meaning that no single component is informative on its own {% cite lengerich2020purifying %}. Because humans tend to reason compositionally and hierarchically, we find that **additive representations**—which isolate effects into separable components—make complex models more understandable.
 
 To advance this perspective, we have:
+
 - Developed new architectures such as deep additive models {% cite agarwal2022neural %} and contextualized additive models {% cite lengerich2022automated %}.
 - Analyzed interaction effects in deep learning theory, including dropout behavior {% cite lengerich2022dropout %}.
 - Studied identifiability and disentanglement in additive models {% cite chang2021how lengerich2020purifying %}.
 - Applied these models to real-world clinical data to support intelligible medical decisions {% cite lengerich2024interpretable %}.
 
 Our goal is to formalize what makes models understandable—and build models that are easy to reason about without sacrificing performance.
- 
+
 <br/><br/>

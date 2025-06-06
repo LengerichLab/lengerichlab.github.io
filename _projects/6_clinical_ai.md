@@ -13,6 +13,7 @@ related_publications: true
 Electronic health records (EHRs) are generated through the interaction of patients, clinicians, biological systems, and healthcare infrastructure. These data contain signals — and artifacts — that reflect both disease biology and the complex realities of medical care.
 
 We collaborate directly with health systems to:
+
 - Build **interpretable AI tools** that clinicians can trust and use,
 - Discover **heterogeneous patterns** in population data for personalized medicine,
 - Translate modeling insights into **practical clinical interventions**.
