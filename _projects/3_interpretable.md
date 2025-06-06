@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Intelligible ML
-description: Building glass-box models that are both predictive and interpretable
+title: Foundations of Intepretability
+description: Developing formal understanding of interpretability through structured models, GAMs, and interaction effects.
 img: assets/img/glass.jpeg
 importance: 3
 category: methods
@@ -10,10 +10,16 @@ related_publications: true
 
 {% include figure.liquid loading="eager" path="assets/img/glass.jpeg" title="glass" class="img-fluid rounded z-depth-1" %}
 
-For many reasons (e.g. scientific inquiry, high-stakes decision making), we need AI systems that are both _accurate_ and _intelligible_.
+In scientific and high-stakes domains, we need AI systems that are not only accurate but also intelligible. Our research investigates the theoretical underpinnings of interpretability, focusing on how model structure affects human understanding.
 
-We find that _interaction effects_ are often a useful lens through which to view intelligibility. Interaction effects {% cite lengerich2020purifying %} are effects which require two input components to know anything about the output (one component alone tells you nothing). Since humans reason by chunking and hierarchical logic, we struggle to understand interactions of multiple variables. If we can instead represent effects as additive (non-interactive) combinations of components, we can understand the components independently and reason about even very complex concepts.
+We explore **interaction effects** as a key barrier to interpretability. Interaction effects arise when two or more input components must be considered jointly to affect the output—meaning that no single component is informative on its own {% cite lengerich2020purifying %}. Because humans tend to reason compositionally and hierarchically, we find that **additive representations**—which isolate effects into separable components—make complex models more understandable.
 
-Toward this end, we have designed new architectures including deep additive models {% cite agarwal2022neural %} and contextualized additive models {% cite lengerich2022automated %}, studied deep learning theory through the lens of interaction effects {% cite lengerich2022dropout %}, studied additive models and identifiability {% cite chang2021how %}, {% cite lengerich2020purifying %}, and applied intelligible models to real-world evidence {% cite lengerich2024interpretable %}.
+To advance this perspective, we have:
+- Developed new architectures such as deep additive models {% cite agarwal2022neural %} and contextualized additive models {% cite lengerich2022automated %}.
+- Analyzed interaction effects in deep learning theory, including dropout behavior {% cite lengerich2022dropout %}.
+- Studied identifiability and disentanglement in additive models {% cite chang2021how lengerich2020purifying %}.
+- Applied these models to real-world clinical data to support intelligible medical decisions {% cite lengerich2024interpretable %}.
 
+Our goal is to formalize what makes models understandable—and build models that are easy to reason about without sacrificing performance.
+ 
 <br/><br/>
