@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Automated data science
-description: Automating data science with foundation models
+title: Efficient Foundation Models
+description: Structuring context improves inference within foundation models, just as it does in classical statistical models.
 img: assets/img/data_science.jpeg
 importance: 3
 category: methods
@@ -10,9 +10,15 @@ related_publications: true
 
 {% include figure.liquid loading="eager" path="assets/img/data_science.jpeg" title="heterogeneity" class="img-fluid rounded z-depth-1" %}
 
-Data science has traditionally taken extensive domain expertise and arduous human effort to design targeted experiments which isolate effects in observational data. We are actively building AI tools to automate and streamline these efforts.
+Structuring context improves inference—not only in statistical graphical models, but also within foundation models. This project investigates how explicit contextual structure can make foundation models more efficient, modular, and interpretable.
 
-{% nocite bordt2024data %}
-{% nocite lengerich2023llms %}
+We focus on making large models practical for real-world deployment by aligning their internal mechanisms with the same principles that make classical models statistically efficient: modularity, conditional independence, and context-aware adaptation.
+
+This work supports:
+- **Structured contextual inference** by building architectural and training constraints that reflect known structure.
+- **Modular reasoning** by decomposing complex predictions into composable parts.
+- **Deployment-readiness** through faster, lower-latency models that retain contextual sensitivity.
+
+Recent work includes **FastCache**{% cite liu2025fastcache %}, an inference-time optimization for diffusion transformers, and ongoing development of **FastLM**, a framework for efficient, composable LLMs.
 
 <br /><br />
