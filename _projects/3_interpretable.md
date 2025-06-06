@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Foundations of Intepretability
+title: Intepretability and Modularity
 description: Developing formal understanding of interpretability through structured models, GAMs, and interaction effects.
 img: assets/img/glass.jpeg
 importance: 3
