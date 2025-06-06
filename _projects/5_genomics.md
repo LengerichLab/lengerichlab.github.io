@@ -8,7 +8,12 @@ category: applications
 related_publications: true
 ---
 
+
+<div class="row">
+  <div class="col-md-6 mx-auto">
 {% include figure.liquid loading="eager" path="assets/img/genomics.jpeg" title="genomics" class="img-fluid rounded z-depth-1" %}
+</div>
+</div>
 
 Genomics and epigenetics provide high-resolution views of the diversity and heterogeneity of populations at the cellular level. We are building computational tools to transform these _observations_ into _understanding_ of disease mecahnisms.
 

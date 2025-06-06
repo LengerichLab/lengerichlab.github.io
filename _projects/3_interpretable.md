@@ -8,7 +8,12 @@ category: methods
 related_publications: true
 ---
 
+
+<div class="row">
+  <div class="col-md-6 mx-auto">
 {% include figure.liquid loading="eager" path="assets/img/glass.jpeg" title="glass" class="img-fluid rounded z-depth-1" %}
+</div>
+</div>
 
 In scientific and high-stakes domains, we need AI systems that are not only accurate but also intelligible. Our research investigates the theoretical underpinnings of interpretability, focusing on how model structure affects human understanding.
 

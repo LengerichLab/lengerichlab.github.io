@@ -8,7 +8,12 @@ category: methods
 related_publications: true
 ---
 
+
+<div class="row">
+  <div class="col-md-6 mx-auto">
 {% include figure.liquid loading="eager" path="assets/img/bridge.jpeg" title="bridge" class="img-fluid rounded z-depth-1" %}
+</div>
+</div>
 
 Prior knowledge is a powerful form of context in statistical inference. Traditionally, applying such knowledge required expert intervention on each new problem. Today, foundation models encode broad domain knowledge in a reusable, black-box format. Our work focuses on extracting and operationalizing this implicit knowledge by connecting foundation models to structured, parametric statistical models.
 

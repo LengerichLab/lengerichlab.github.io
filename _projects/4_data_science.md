@@ -8,7 +8,12 @@ category: methods
 related_publications: true
 ---
 
+
+<div class="row">
+  <div class="col-md-6 mx-auto">
 {% include figure.liquid loading="eager" path="assets/img/data_science.jpeg" title="heterogeneity" class="img-fluid rounded z-depth-1" %}
+</div>
+</div>
 
 Structuring context improves inference—not only in statistical graphical models, but also within foundation models. This project investigates how explicit contextual structure can make foundation models more efficient, modular, and interpretable.
 

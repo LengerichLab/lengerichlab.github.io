@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Maternal health
-description: Context-specific causal signals in high-stakes care.
+description: Learning from real-world pregnancy data to improve maternal care.
 img: assets/img/maternal.jpeg
 importance: 4
 category: applications
