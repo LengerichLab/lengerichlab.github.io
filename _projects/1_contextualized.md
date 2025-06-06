@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Contextualized learning
-description: Statistical models that adapt to patient, task, or environmental context.
+description: Models with parameters that adapt to patient, task, or environmental context to support personalized inference.
 img: assets/img/heterogeneity.jpeg
 importance: 1
 category: methods
