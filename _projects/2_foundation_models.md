@@ -16,5 +16,5 @@ We are building a bi-directional bridge between the two paradigms:
 
 - *Inference from Foundation Models*: Using foundation models to inform and regularize statistical estimators {% cite mahbub2024from %}.
 - *Understanding with Foundation Models*: Using foundation models to interpret, summarize, or explain structured models automatically {% cite bordt2024data %}.
-- 
+  
 <br/><br/>
