@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Foundation models as context
-description: Bridging foundation models and statistical inference
+description: Using foundation models as flexible priors and contextual memory for downstream inference tasks.
 img: assets/img/bridge.jpeg
 importance: 2
 category: methods
@@ -10,9 +10,11 @@ related_publications: true
 
 {% include figure.liquid loading="eager" path="assets/img/bridge.jpeg" title="bridge" class="img-fluid rounded z-depth-1" %}
 
-One of the most potent forms of context for statistical estimation and inference is prior knowledge. While this has historically required expert humans to apply this prior knowledge on each new problem, we now have foundation models that capture an entire domain in a large black-box model. Importantly, context-adaptive learning systems allow us to extract this prior knowledge by connecting foundation models to structured statistical models.
+Prior knowledge is a powerful form of context in statistical inference. Traditionally, applying such knowledge required expert intervention on each new problem. Today, foundation models encode broad domain knowledge in a reusable, black-box format. Our work focuses on extracting and operationalizing this implicit knowledge by connecting foundation models to structured, parametric statistical models.
 
-{% nocite lengerich2018retrofitting %}
-{% nocite bordt2024data %}
+We are building a bi-directional bridge between the two paradigms:
 
+- *Inference from Foundation Models*: Using foundation models to inform and regularize statistical estimators {% cite mahbub2024from %}.
+- *Understanding with Foundation Models*: Using foundation models to interpret, summarize, or explain structured models automatically {% cite bordt2024data %}.
+- 
 <br/><br/>
