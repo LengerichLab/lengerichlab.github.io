@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Context-adaptive systems
-description: Training models to reveal heterogeneity by automatically adapting to context
+description: Statistical models that adapt to patient, task, or environmental context.
 img: assets/img/heterogeneity.jpeg
 importance: 1
 category: methods
@@ -22,7 +22,8 @@ We've built a Python package {% cite ellington2024contextualized %} and applied 
     <ul>
         <li>Indivdual treatment effects {% cite lengerich2022automated %}</li>
         <li>Policy Recovery {% cite deuschel2024contextualized %}</li>
+        <li>Personalized Gene Regulatory Networks {% cite ellington2025learning %}</li>
     </ul>
-and are continuing to build more tools with context-adaptive modeling.
+and we're continuing to build more tools with context-adaptive modeling.
 </p>
 <br/><br/>
